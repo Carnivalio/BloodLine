@@ -2,29 +2,30 @@
 
 ## Code Style Rules
 
-•	Use imports for packages and modules only.
-•	Import each module using the full pathname location of the module.
-•	Avoid global variables.
-•	Do not terminate your lines with semi-colons and do not use semi-colons to put two commands on the same line.
-•	Maximum line length is 80 characters.
-•	Use parentheses sparingly.
-•	Indent your code blocks with 4 spaces.
-•	Two blank lines between top-level definitions, one blank line between method definitions.
-•	Follow standard typographic rules for the use of spaces around punctuation.
-•	Be sure to use the right style for module, function, method and in-line comments.
-•	If a class inherits from no other base classes, explicitly inherit from object. This also applies to nested classes.
-•	Use the format method or the % operator for formatting strings, even when the parameters are all strings. Use your best judgement to decide between + and % (or format) though.
-•	Explicitly close files and sockets when done with them.
-•	Use TODO comments for code that is temporary, a short-term solution, or good-enough but not perfect.
-•	Imports should be on separate lines.
-•	Use single quotes for strings, or a double quote if the the string contains a single quote. Don’t waste time doing unrelated refactoring of existing code to conform to this style.
-•	Use underscores, not camelCase, for variable, function and method names (i.e. poll.get_unique_voters(), not poll.getUniqueVoters()).Use InitialCaps for class names (or for factory functions that return classes).Use four spaces for indenting
-•	Have a comment on every function that describes its purpose
-•	Embed function comments in /* */
-•	Don't abbreviate local variables (e.g., 'total' not 'tot')
-•	In test docstrings, state the expected behavior that each test demonstrates. Don’t include preambles such as “Tests that” or “Ensures that”.
-Reserve ticket references for obscure issues where the ticket has additional details that can’t be easily described in docstrings or comments. Include the ticket number at the end of a sentence
-•	Use four space hanging indentation rather than vertical alignment:
+- -	Use imports for packages and modules only.
+-	Use imports for packages and modules only.
+-	Import each module using the full pathname location of the module.
+-	Avoid global variables.
+-	Do not terminate your lines with semi-colons and do not use semi-colons to put two commands on the same line.
+-	Maximum line length is 80 characters.
+-	Use parentheses sparingly.
+-	Indent your code blocks with 4 spaces.
+-	Two blank lines between top-level definitions, one blank line between method definitions.
+-	Follow standard typographic rules for the use of spaces around punctuation.
+-	Be sure to use the right style for module, function, method and in-line comments.
+-	If a class inherits from no other base classes, explicitly inherit from object. This also applies to nested classes.
+-	Use the format method or the % operator for formatting strings, even when the parameters are all strings. Use your best judgement to decide between + and % (or format) though.
+-	Explicitly close files and sockets when done with them.
+-	Use TODO comments for code that is temporary, a short-term solution, or good-enough but not perfect.
+-	Imports should be on separate lines.
+-	Use single quotes for strings, or a double quote if the the string contains a single quote. Don’t waste time doing unrelated refactoring of existing code to conform to this style.
+-	Use underscores, not camelCase, for variable, function and method names (i.e. poll.get_unique_voters(), not poll.getUniqueVoters()).Use InitialCaps for class names (or for factory functions that return classes).Use four spaces for indenting
+-	Have a comment on every function that describes its purpose
+-	Embed function comments in /* */
+-	Don't abbreviate local variables (e.g., 'total' not 'tot')
+-	In test docstrings, state the expected behavior that each test demonstrates. Don’t include preambles such as “Tests that” or “Ensures that”.
+-	Reserve ticket references for obscure issues where the ticket has additional details that can’t be easily described in docstrings or comments. Include the ticket number at the end of a sentence
+-	Use four space hanging indentation rather than vertical alignment:
 raise AttributeError(
     'Here is a multine error message '
     'shortened for clarity.'
@@ -32,10 +33,10 @@ raise AttributeError(
 Instead of:
 raise AttributeError('Here is a multine error message '
                      'shortened for clarity.')
-•	Avoid use of “we” in comments, e.g. “Loop over” rather than “We loop over”.
-•	In Django template code, put one (and only one) space between the curly brackets and the tag contents.
-•	In Django views, the first parameter in a view function should be called request.’
-•	Field names should be all lowercase, using underscores instead of camelCase.
+-	Avoid use of “we” in comments, e.g. “Loop over” rather than “We loop over”.
+-	In Django template code, put one (and only one) space between the curly brackets and the tag contents.
+-	In Django views, the first parameter in a view function should be called request.’
+-	Field names should be all lowercase, using underscores instead of camelCase.
 
 ## About BloodLine
 
