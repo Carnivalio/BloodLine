@@ -2,7 +2,6 @@
 
 ## Code Style Rules
 
-- -	Use imports for packages and modules only.
 -	Use imports for packages and modules only.
 -	Import each module using the full pathname location of the module.
 -	Avoid global variables.
