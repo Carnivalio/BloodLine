@@ -2,46 +2,45 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
+from django.contrib.messages.views import SuccessMessageMixin
 from django.utils import timezone
 from django.shortcuts import redirect
+from django.views.generic.edit import CreateView
+from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
 
 from .models import User, Bank, Blood
 from .forms import UserForm, BankForm, BloodForm
 
-"""
-This class renders index page, which demonstrates all
-the users registered on the website
-"""
 class IndexView(generic.ListView):
     template_name = 'bloodline/index.html'
     context_object_name = 'user_list'
 
     def get_queryset(self):
-        return User.objects.all().order_by('-id')[:20]
+        return User.objects.all().order_by('-id')[:10]
 
-"""
-This class renders user details page, which demonstrates
-the personal information of a specific user
-"""
 class DetailView(generic.DetailView):
     model = User
-    # Specify the templete using for details page
-    template_name = 'bloodline/detail.html'
+    template_name = 'bloodline/user_detail.html'
 
+class CreateUser(SuccessMessageMixin, CreateView):
+    template_name = 'bloodline/user_create.html'
+    success_url = reverse_lazy('bloodline_app:index')
+    model = User
+    fields = ['email', 'username', 'password', 'first_name', 'last_name', 'mobile', 'address', 'blood_type', 'verified']
+    template_name_suffix = '_create_form'
+    success_message = "User successfully created!"
 
-def add_user(request):
-    """
-    This function implements adding user to the detail page
-    """
-    if request.method == "POST":
-        # Get data from the posted form
-        form = UserForm(request.POST)
-        # Validate the posted data (Handled by the model)
-        if form.is_valid():
-            model_instance = form.save(commit=False) # Save the user input data into the form object
-            model_instance.timestamp = timezone.now() # Get the current timestamp for the logging purpose
-            model_instance.save() # Save the data from the form into the database through model
-            return redirect('/bloodline') # Redirect to the index page
-    else:
-        form = UserForm()
-    return render(request, "bloodline/add_user.html", {'form': form})
+class UpdateUser(UpdateView):
+    template_name = 'bloodline/user_update.html'
+    model = User
+    success_url = reverse_lazy('bloodline_app:index')
+    fields = ['email', 'username', 'password', 'first_name', 'last_name', 'mobile', 'address', 'blood_type', 'verified']
+    template_name_suffix = '_update_form'
+
+class DeleteUser(DeleteView):
+    template_name = 'bloodline/user_delete.html'
+    model = User
+    success_url = reverse_lazy('bloodline_app:index')
+    template_name_suffix = '_confirm_delete'

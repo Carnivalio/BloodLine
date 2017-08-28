@@ -23,17 +23,18 @@
 					{% for user in user_list %}
 					<tr>
 						<td>{{ user.id }}</td>
-						<td><a href="{% url 'bloodline:detail' user.id %}">{{ user.username }}</a></td>
+						<td><a href="{% url 'bloodline_app:user_detail' user.id %}">{{ user.username }}</a></td>
 					</tr>
 					{% endfor %}
 					<tr>
 						<td></td>
-                		<td><a href="{% url 'bloodline:add_user' %}">Add User</a></td>
+                		<td><input onclick="location.href='{% url 'bloodline_app:user_create' %}';" type="button" value="Create User" /></td>
             		</tr>
 				</tbody>
 			</table>
 		{% else %}
 		    <p>No user registered.</p>
+		    <input onclick="location.href='{% url 'bloodline_app:user_create' %}';" type="button" value="Create User" />
 		{% endif %}
 	</div>
 </div>

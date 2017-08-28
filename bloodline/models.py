@@ -4,14 +4,19 @@ from django.db import models
 from django.forms import ModelForm
 from django.utils import timezone
 from django.core.validators import RegexValidator
+from django.contrib.auth.models import User
 
 phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Mobile/Phone number must be entered in the format: '+999999999'. Minimum 9 digits & up to 15 digits allowed.")
 
 BLOOD_CHOICES = (
-    (0, 'O'),
-    (1, 'A'),
-    (2, 'B'),
-    (3, 'AB'),
+    (0, 'A Positive'),
+    (1, 'A Negative'),
+    (2, 'B Positive'),
+    (3, 'B Negative'),
+    (4, 'AB Positive'),
+    (5, 'AB Negative'),
+    (6, 'O Positive'),
+    (7, 'O Negative'),
 )
 
 STATUS_CHOICES = (
@@ -49,5 +54,4 @@ class Blood(models.Model):
     donor_date = models.DateTimeField('donor date', null=False, blank=False, unique=True)
     blood_status = models.IntegerField(choices=STATUS_CHOICES, default=0, null=False, blank=False)
     def __str__(self):
-        # return dict(STATUS_CHOICES).get(self.blood_status)
         return self.user.username
