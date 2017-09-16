@@ -1,4 +1,9 @@
-﻿{% load static %}
+﻿<!-- <form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <input type="submit" value="Confirm" />
+</form> -->
+
+{% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'bloodline/style.css' %}" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
@@ -19,7 +24,7 @@
             <td><p>Are you sure you want to delete "{{ object }}"?</p></td>
         </tr>
         <tr>
-            <td><input type="button" value="Back" onClick="javascript:history.go(-1);"> <input type="submit" value="Confirm" /></td>
+            <td><input onclick="location.href='{% url 'bloodline_app:user_detail' pk=bloodlineuser.pk %}';" type="button" value="Back" /> <input type="submit" value="Confirm" /></td>
         </tr>
         </table>
     </form>

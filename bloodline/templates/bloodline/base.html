@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bloodline/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+    <meta charset="utf-8">
+    <title>{% block title %}BloodLine HomePage{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <h1>BloodLine</h1>
+      {% if user.is_authenticated %}
+        <a href="{% url 'bloodline_app:logout' %}">logout</a>
+      {% else %}
+        <a href="{% url 'bloodline_app:login' %}">login</a> / <a href="{% url 'bloodline_app:signup' %}">signup</a>
+      {% endif %}
+      <hr>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>

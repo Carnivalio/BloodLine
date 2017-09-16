@@ -1,4 +1,4 @@
-# BloodLine
+﻿# BloodLine
 
 ## Code Style Rules
 

@@ -1,4 +1,9 @@
-﻿{% load static %}
+﻿<!-- <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form> -->
+
+{% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'bloodline/style.css' %}" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
@@ -13,12 +18,13 @@
 	<div id="content-main">
 {% block content %}
     <h1>Create User</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
+    <form method="POST" class="post-form">
+    {% csrf_token %}
         <table>
         {{ form.as_table }}
         <tr>
             <td></td>
-            <td><input type="button" value="Back" onClick="javascript:history.go(-1);"> <input type="submit" value="Save" /></td>
+            <td><input onclick="location.href='{% url 'bloodline_app:index' %}';" type="button" value="Back" /> <input type="submit" value="Save" /></td>
         </tr>
         </table>
     </form>
