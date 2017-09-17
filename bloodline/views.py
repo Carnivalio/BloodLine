@@ -3,13 +3,14 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 
 from .models import BloodlineUser, BloodlineBank, BloodlineBlood
 from .forms import BloodlineUserForm, BloodlineBankForm, BloodlineBloodForm, SignUpForm
@@ -40,3 +41,7 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'bloodline/signup.html', {'form': form})
+
+@login_required
+def home(request):
+    return render(request, 'core/home.html')
