@@ -32,7 +32,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
-            user.profile.birth_date = form.cleaned_data.get('birth_date')
+            #user.profile.birth_date = form.cleaned_data.get('birth_date')
             user.save()
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
@@ -44,4 +44,10 @@ def signup(request):
 
 @login_required
 def home(request):
-    return render(request, 'core/home.html')
+    return render(request, 'bloodline/home.html')
+
+def header(request):
+    return render(request, 'bloodline/header.html')
+
+def test(request):
+    return render(request, 'bloodline/test.html')

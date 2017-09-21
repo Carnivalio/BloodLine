@@ -37,6 +37,8 @@ urlpatterns = [
     # url(r'^', include(router.urls)),
     url(r'^$', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
+    url(r'^header/', views.header),
+    url(r'^test/', views.test),
 
     url(r'^(?P<pk>[0-9]+)/$', user_views.DetailView.as_view(), name='user_detail'),
     url(r'^user_create/$', user_views.CreateUser.as_view(), name='user_create'),

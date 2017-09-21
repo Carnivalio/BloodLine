@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+# Autentication key pair of Twitter
+SOCIAL_AUTH_TWITTER_KEY = 'CSrE5qht3BhI2DBjoVICVqcyO'
+SOCIAL_AUTH_TWITTER_SECRET = 'sUw11WVmZZzLcqaKEab7TrJL6BwbPoJsdioEnrUm1ACniIGsTn'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +29,7 @@ SECRET_KEY = '!=jrg#(qod$u6c%^!x8((f)hwej1p6ru)xfx$!b6ceuhx37v^8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['54.206.126.58', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -40,6 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'social_django',
+    # Use default Django ORM
+    'social.apps.django_app.default',
+    'bootstrap3',
+
 ]
 
 MIDDLEWARE = [
@@ -101,12 +109,22 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = [
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
+# Authentication backends Setting
+AUTHENTICATION_BACKENDS = (
+# For Facebook Authentication
+'social.backends.facebook.FacebookOAuth2',
 
-    'django.contrib.auth.backends.ModelBackend',
-]
+# For Twitter Authentication
+'social.backends.twitter.TwitterOAuth',
+
+# For Google Authentication
+'social.backends.google.GoogleOpenId',
+'social.backends.google.GoogleOAuth2',
+'social.backends.google.GoogleOAuth',
+
+# Default Django Auth Backends
+'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'bloodline_prj.wsgi.application'
 
@@ -182,3 +200,9 @@ LOGIN_REDIRECT_URL = 'bloodline_app:home'
 
 # AUTH_USER_MODEL = 'bloodline.User'
 AUTH_USER_MODEL = 'bloodline.BloodlineUser'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
