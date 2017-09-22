@@ -21,11 +21,16 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{% static 'bloodline/css/style.css' %}">
 
+    <!-- jQuery -->
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="{% static 'bloodline/js/jquery-3.2.1.min.js' %}"></script>
+
     <!-- Bootstrap respond JavaScript -->
-    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bloodline/js/bootstrap.min.js' %}"></script>
 
     <!-- Custom JavaScript -->
-    <script type="text/javascript" src="{% static 'js/bloodline.js %' %}"></script>
+    <script type="text/javascript" src="{% static 'bloodline/js/bloodline.js %' %}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,32 +39,76 @@
     <![endif]-->
 </head>
 <body>
-<header class="ui masthead navba navbar-fixed-top">
-    <div class="navbar-inner container">
-        <div class="main navbar-top row">
-            <div class="main logo col-md-11">
-                <div class="col-md-2"><img class="main logo img" src="../../../static/bloodline/img/bloodline-logo.jpg"></div>
-                <div class="col-md-10"></div>
+<nav class="navbar navbar-fixed-top my-navbar top-nav" id="header-navbar" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../../../static/bloodline/img/bloodline-logo.jpg"> </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Donate</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> About BloodLine</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-search"></span> Find a Centre</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-book"></span> Rare Blood Donor Database</a></li>
+                <li>
+                    <button type="button" class="btn btn-danger login">Login</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div id="myCarousel" class="carousel slide bg" data-ride="carousel">
+
+    <!-- 轮播（Carousel）指标 -->
+    <div id="middle-ad">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <div class="item active item1">
+                <img class="img-responsive center-block" src="../../../static/bloodline/img/learn.gif"
+                     alt="First slide">
+                <button type="button" class="btn btn-danger appointment-btn">REQUEST APPOINTMENT NOW</button>
+            </div>
+            <div class="item item2">
+                <img src="/wp-content/uploads/2014/07/slide2.png" alt="Second slide">
+            </div>
+            <div class="item item3">
+                <img src="/wp-content/uploads/2014/07/slide3.png" alt="Third slide">
             </div>
         </div>
-
-        <ul class="nav nav-tabs navbar-right">
-            <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Donate</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> About BloodLine</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-search"></span> Find a Centre</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-book"></span> Rare Blood Donor Database</a></li>
-            <li><button type="button" class="btn btn-primary">Login</button></li>
-        </ul>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="carousel-control left" href="#myCarousel"
+           data-slide="prev">&lsaquo;
+        </a>
+        <a class="carousel-control right" href="#myCarousel"
+           data-slide="next">&rsaquo;
+        </a>
     </div>
-</header>
 
-<div class="container main content-container">
-    <img class="img-responsive" src="../../../static/bloodline/img/home-background.jpg">
 
 </div>
 
 
 
+<script>
+
+    //$(window).scroll(function () {
+    // if ($(".navbar").offset().top > 50) {$(".navbar-fixed-top").addClass("top-nav");
+    //}else {$(".navbar-fixed-top").removeClass("top-nav");}
+    //})
+    $('#myCarousel').carousel({interval: 100000});
+</script>
 </body>
 </html>
