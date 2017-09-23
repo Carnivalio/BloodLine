@@ -87,8 +87,20 @@ button.navbar-toggle > span.icon-bar {
     background: url("../img/Nathan-homepage.png")
 }
 
-#myCarousel .item {
+.signup-prompt{
+    color:white;
+}
 
+.login-box{
+    margin-top: 100px;
+}
+
+.login-box a:hover{
+    color:mintcream;
+}
+
+.forgot-passward-prompt{
+    color: white;
 }
 
 .layer {
