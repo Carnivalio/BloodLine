@@ -1,8 +1,41 @@
-{% extends 'bloodline/base_old.html' %}
+{% extends 'bloodline/base.html' %}
 
 {% block content %}
-  <h2>Welcome, {{ user.get_full_name }} <small>{{ user.username }}</small>!</h2>
-  <!-- <p>Your birth date: {{ user.profile.birth_date }}</p> -->
+    <h2>Homepage</h2>
+    <p>Hello {{ user.username }}!</p>
+    <div id="myCarousel" class="carousel slide bg" data-ride="carousel">
+
+        <!-- 轮播（Carousel）指标 -->
+        <div id="middle-ad">
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <!-- 轮播（Carousel）项目 -->
+            <div class="carousel-inner">
+                <div class="item active item1">
+                    <img class="img-responsive center-block" src="../../../static/bloodline/img/learn.gif"
+                         alt="First slide">
+                    <button type="button" class="btn btn-danger appointment-btn">REQUEST APPOINTMENT NOW</button>
+                </div>
+                <div class="item item2">
+                    <img src="/wp-content/uploads/2014/07/slide2.png" alt="Second slide">
+                </div>
+                <div class="item item3">
+                    <img src="/wp-content/uploads/2014/07/slide3.png" alt="Third slide">
+                </div>
+            </div>
+            <!-- 轮播（Carousel）导航 -->
+            <a class="carousel-control left" href="#myCarousel"
+               data-slide="prev">&lsaquo;
+            </a>
+            <a class="carousel-control right" href="#myCarousel"
+               data-slide="next">&rsaquo;
+            </a>
+        </div>
+
+
+    </div>
+    {{ block.super }}
 {% endblock %}
-
-

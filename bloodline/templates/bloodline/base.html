@@ -30,7 +30,7 @@
     <script type="text/javascript" src="{% static 'bloodline/js/bootstrap.min.js' %}"></script>
 
     <!-- Custom JavaScript -->
-    <script type="text/javascript" src="{% static 'bloodline/js/bloodline.js %' %}"></script>
+    <script type="text/javascript" src="{% static 'bloodline/js/bloodline.js' %}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -39,7 +39,6 @@
     <![endif]-->
 </head>
 <body>
-
 <!-- Navigation module -->
 {% block navigation %}
     <nav class="navbar navbar-fixed-top my-navbar top-nav" id="header-navbar" role="navigation">
@@ -56,20 +55,57 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-heart"></span> Donate</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-info-sign"></span> About BloodLine</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-search"></span> Find a Centre</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-book"></span> Rare Blood Donor Database</a></li>
-                    <li>
-                        <button type="button" class="btn btn-danger login">Login</button>
+                    <li class="active home-btn"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li class="donate-btn"><a href="#"><span class="glyphicon glyphicon-heart"></span> Donate</a></li>
+                    <li class="about-btn"><a href="#"><span class="glyphicon glyphicon-info-sign"></span> About
+                        BloodLine</a></li>
+                    <li class="find-centre-btn"><a href="#"><span class="glyphicon glyphicon-search"></span> Find a
+                        Centre</a></li>
+                    <li class="search-database-btn"><a href="#"><span class="glyphicon glyphicon-book"></span> Rare
+                        Blood Donor Database</a></li>
+                    <li class="login-btn">
+                        <button type="button" class="btn btn-danger">Login</button>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-{% endblock %}
 
+{% endblock %}
+{% block search-box %}
+
+    <div class="search-container hide container">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-10">
+                <button type="button" class="close search-box-close" aria-label="Close"><span aria-hidden="true"><span
+                        class="glyphicon glyphicon-remove"></span></span></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-group input-group-lg col-md-8 col-md-offset-2 search-input-container">
+                <input type="text" class="form-control search-input" placeholder="">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+            </div>
+        </div>
+        <div class="row">
+                <ul class="list-group search-result-list col-md-8 col-md-offset-2">
+                    <li class="list-group-item">免费域名注册</li>
+                    <li class="list-group-item">免费 Window 空间托管</li>
+                    <li class="list-group-item">图像的数量</li>
+                    <li class="list-group-item">24*7 支持</li>
+                    <li class="list-group-item">每年更新成本</li>
+                    <li class="list-group-item">免费域名注册</li>
+                    <li class="list-group-item">免费 Window 空间托管</li>
+                    <li class="list-group-item">图像的数量</li>
+                    <li class="list-group-item">24*7 支持</li>
+                    <li class="list-group-item">每年更新成本</li>
+                </ul>
+
+        </div>
+
+    </div>
+{% endblock %}
 <!-- Middle content module -->
 {% block content %}{% endblock %}
 

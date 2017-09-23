@@ -22,10 +22,6 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return BloodlineUser.objects.all().order_by('-pk')[:10]
 
-@login_required
-def home(request):
-    return render(request, 'bloodline/home.html')
-
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -51,3 +47,6 @@ def header(request):
 
 def test(request):
     return render(request, 'bloodline/test.html')
+
+def base_search(request):
+    return render(request, 'bloodline/base_search.html')

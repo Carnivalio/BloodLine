@@ -10,15 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-import os
 
-# Autentication key pair of Twitter
-SOCIAL_AUTH_TWITTER_KEY = 'CSrE5qht3BhI2DBjoVICVqcyO'
-SOCIAL_AUTH_TWITTER_SECRET = 'sUw11WVmZZzLcqaKEab7TrJL6BwbPoJsdioEnrUm1ACniIGsTn'
+import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -30,7 +26,6 @@ SECRET_KEY = '!=jrg#(qod$u6c%^!x8((f)hwej1p6ru)xfx$!b6ceuhx37v^8'
 DEBUG = True
 
 ALLOWED_HOSTS = ['54.206.126.58', 'localhost', '127.0.0.1']
-
 
 # Application definition
 
@@ -47,6 +42,7 @@ INSTALLED_APPS = [
     # Use default Django ORM
     'social.apps.django_app.default',
     'bootstrap3',
+
 
 ]
 
@@ -101,33 +97,60 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                # Social network authentication
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                # Setting of Template Context Processors for Social Auth
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
 ]
 
-# Authentication backends Setting
-AUTHENTICATION_BACKENDS = (
-# For Facebook Authentication
-'social.backends.facebook.FacebookOAuth2',
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social_auth.backends.pipeline.social.social_auth_user',
+    # 用户名与邮箱关联，文档说可能出现问题
+    # 'social_auth.backends.pipeline.associate.associate_by_email',
+    'social_auth.backends.pipeline.misc.save_status_to_session',
+    'social_auth.backends.pipeline.user.create_user',
+    'social_auth.backends.pipeline.social.associate_user',
+    'social_auth.backends.pipeline.social.load_extra_data',
+    'social_auth.backends.pipeline.user.update_user_details',
+    'social_auth.backends.pipeline.misc.save_status_to_session',
 
-# For Twitter Authentication
-'social.backends.twitter.TwitterOAuth',
-
-# For Google Authentication
-'social.backends.google.GoogleOpenId',
-'social.backends.google.GoogleOAuth2',
-'social.backends.google.GoogleOAuth',
-
-# Default Django Auth Backends
-'django.contrib.auth.backends.ModelBackend',
 )
 
-WSGI_APPLICATION = 'bloodline_prj.wsgi.application'
+# Authentication backends Setting
+AUTHENTICATION_BACKENDS = (
+    # For Facebook Authentication
+    'social.backends.facebook.FacebookOAuth2',
 
+    # For Twitter Authentication
+    'social.backends.twitter.TwitterOAuth',
+
+    # For Google Authentication
+    'social.backends.google.GoogleOpenId',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.google.GoogleOAuth',
+
+    # For WeChat
+    'social.backends.weixin.WeixinOAuth2',
+
+    # Default Django Auth Backends
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+# Autentication key pair of Twitter
+SOCIAL_AUTH_TWITTER_KEY = 'CSrE5qht3BhI2DBjoVICVqcyO'
+SOCIAL_AUTH_TWITTER_SECRET = '	sUw11WVmZZzLcqaKEab7TrJL6BwbPoJsdioEnrUm1ACniIGsTn'
+
+# Authentication key pair of WeChat
+SOCIAL_AUTH_WEIXIN_KEY = 'wx4fb***********599'            #开放平台应用的APPID
+SOCIAL_AUTH_WEIXIN_SECRET = 'f1c17************08c0489'    #开放平台应用的SECRET
+
+WSGI_APPLICATION = 'bloodline_prj.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -138,7 +161,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -172,7 +194,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -185,7 +206,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

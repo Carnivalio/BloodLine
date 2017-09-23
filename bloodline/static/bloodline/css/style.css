@@ -6,28 +6,29 @@ body {
     background: white url("images/background.gif") no-repeat right bottom;
 }*/
 
-.navbar-inner{
+.navbar-inner {
     border-top: red 3px solid;
 }
 
-.main.logo.img{
+.main.logo.img {
     width: 80px;
     height: 100px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.main.content-container{
+.main.content-container {
     background-image: url("../img/home-background.jpg");
 }
 
-.content-container{
+.content-container {
     width: 100%;
     height: 300px;
 }
 
 html, body {
-    width:100%;height:100%;
+    width: 100%;
+    height: 100%;
 }
 
 .bg {
@@ -37,42 +38,112 @@ html, body {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(http://www.xiandanke.cn/Image/intro-bg.jpg) no-repeat bottom center;
-    background-color: #000;background-size: cover;
+    background-color: white;
+    background-size: cover;
 }
 
 .my-navbar {
-    padding:20px 0;
+    padding: 20px 0;
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
 
-.my-navbar a{
-    background:transparent !important;color:#fff !important
+.my-navbar a {
+    background: transparent !important;
+    color: darkslategray !important
 }
 
-.my-navbar a:hover{
-    color:#45bcf9 !important;
-    background:transparent;
-    outline:0;
+.my-navbar a:hover {
+    color: red !important;
+    background: transparent;
+    outline: 0
 }
 
-.my-navbar a{
+.my-navbar a {
     transition: color 0.5s ease-in-out;
-}/*-webkit-transition ;-moz-transition*/
+}
 
-.top-nav{
-    padding:0;background:#000;
+/*-webkit-transition ;-moz-transition*/
+.top-nav {
+    padding: 0;
+    border-top: red 3px solid;
+    background: white;
+    height: 120px;
 }
 
 button.navbar-toggle {
-    background-color:#fbfbfb;
-}/*整个背景都是transparent透明的，会看不到，所以再次覆盖一下*/
-
-button.navbar-toggle > span.icon-bar {
-    background-color:#dedede
+    background-color: #fbfbfb;
 }
 
-#home-navbar{
-    width: 200px;
+button.navbar-toggle > span.icon-bar {
+    background-color: #dedede
+}
 
+#navbar-collapse {
+    padding-top: 50px;
+    padding-right: 50px;
+}
+
+#myCarousel {
+    background: url("../img/Nathan-homepage.png")
+}
+
+#myCarousel .item {
+
+}
+
+.layer {
+    background: #000;
+    opacity: 0.42;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.search-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 99999;
+    background: rgba(256, 256, 256, 0.8) !important;
+    background: white;
+    filter: Alpha(opacity=80);
+}
+
+.red {
+    color: red;
+}
+
+.search-input-container {
+    padding-top: 150px;
+    opacity: 1 !important;
+}
+
+.search-result-list {
+    opacity: 1 !important;
+    height: 250px;
+    overflow: scroll;
+    overflow-x:hidden;
+    margin-top: 10px;
+}
+
+.close {
+    padding-top: 200px;
+    margin-right: 20px;
+    margin-top: 20px;
+    opacity: 1 !important;
+    color: #555;
+}
+
+.hide {
+    display: none;
 }
