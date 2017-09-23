@@ -59,3 +59,4 @@ class BloodlineBlood(models.Model):
     def __str__(self):
         # return dict(STATUS_CHOICES).get(self.blood_status)
         return self.user.username
+

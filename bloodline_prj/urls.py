@@ -17,7 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-	url(r'^bloodline/', include('bloodline.urls', namespace="bloodline_app")),
+    url(r'^bloodline/', include('bloodline.urls', namespace="bloodline_app")),
     url(r'^admin/', admin.site.urls),
     url(r'^rest/', include('api.urls', namespace="social")),
+    url(r'^captcha/', include('captcha.urls')),
 ]

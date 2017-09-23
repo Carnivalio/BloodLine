@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,7 +24,19 @@ SECRET_KEY = '!=jrg#(qod$u6c%^!x8((f)hwej1p6ru)xfx$!b6ceuhx37v^8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+INCLUDE_REGISTER_URL = True
+INCLUDE_AUTH_URLS = True
+
 ALLOWED_HOSTS = ['54.206.126.58', 'localhost', '127.0.0.1']
+
+# Verification email setup
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "cristal.wu17@gmail.com"
+###TODO: Not safe here
+EMAIL_HOST_PASSWORD = "cristal.wu17"
+EMAIL_USE_TLS = True
+EMAIL_FROM = "cristal.wu17@gmail.com"
 
 # Application definition
 
@@ -39,10 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'social_django',
-    # Use default Django ORM
     'social.apps.django_app.default',
     'bootstrap3',
-
+    'captcha',
 
 ]
 
@@ -141,14 +151,13 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-
 # Autentication key pair of Twitter
 SOCIAL_AUTH_TWITTER_KEY = 'CSrE5qht3BhI2DBjoVICVqcyO'
 SOCIAL_AUTH_TWITTER_SECRET = '	sUw11WVmZZzLcqaKEab7TrJL6BwbPoJsdioEnrUm1ACniIGsTn'
 
 # Authentication key pair of WeChat
-SOCIAL_AUTH_WEIXIN_KEY = 'wx4fb***********599'            #开放平台应用的APPID
-SOCIAL_AUTH_WEIXIN_SECRET = 'f1c17************08c0489'    #开放平台应用的SECRET
+SOCIAL_AUTH_WEIXIN_KEY = 'wx4fb***********599'  # 开放平台应用的APPID
+SOCIAL_AUTH_WEIXIN_SECRET = 'f1c17************08c0489'  # 开放平台应用的SECRET
 
 WSGI_APPLICATION = 'bloodline_prj.wsgi.application'
 
