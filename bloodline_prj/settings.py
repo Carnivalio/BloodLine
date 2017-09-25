@@ -34,7 +34,7 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "cristal.wu17@gmail.com"
 ###TODO: Not safe here
-EMAIL_HOST_PASSWORD = "cristal.wu17"
+EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = True
 EMAIL_FROM = "cristal.wu17@gmail.com"
 
