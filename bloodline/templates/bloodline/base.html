@@ -83,24 +83,17 @@
         </div>
 
         <div class="row">
-            <div class="input-group input-group-lg col-md-8 col-md-offset-2 search-input-container">
+            <form class="input-group input-group-lg col-md-8 col-md-offset-2 search-input-container" method="post"
+                  id="search-form">
+                {% csrf_token %}
                 <input type="text" class="form-control search-input" placeholder="">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-            </div>
+            </form>
         </div>
         <div class="row">
-                <ul class="list-group search-result-list col-md-8 col-md-offset-2">
-                    <li class="list-group-item">免费域名注册</li>
-                    <li class="list-group-item">免费 Window 空间托管</li>
-                    <li class="list-group-item">图像的数量</li>
-                    <li class="list-group-item">24*7 支持</li>
-                    <li class="list-group-item">每年更新成本</li>
-                    <li class="list-group-item">免费域名注册</li>
-                    <li class="list-group-item">免费 Window 空间托管</li>
-                    <li class="list-group-item">图像的数量</li>
-                    <li class="list-group-item">24*7 支持</li>
-                    <li class="list-group-item">每年更新成本</li>
-                </ul>
+            <ul class="list-group search-result-list col-md-8 col-md-offset-2">
+
+            </ul>
 
         </div>
 
@@ -108,7 +101,7 @@
 {% endblock %}
 <!-- Middle content module -->
 <div id="myCarousel" class="carousel slide bg" data-ride="carousel">
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 </div>
 
 <!-- Footer module -->

@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -10,11 +12,14 @@ from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from django.shortcuts import render
+from django.template import RequestContext
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.edit import View
 from django.contrib.auth.hashers import make_password
 
 from .forms import SignUpForm
-from .models import BloodlineUser
+from .models import BloodlineUser, BloodlineBank
 from .tokens import account_activation_token
 from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
 
@@ -92,6 +97,17 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
     else:
         return HttpResponse('Activation link is invalid!')
 
+@csrf_exempt
+# TODO: might not safe here
+def list_centre(request):
+    key_words = request.POST.get('key_words')
+    print(key_words)
+    recontents = BloodlineBank.objects.filter(postcode=key_words)
+    print(recontents)
+    rejson = []
+    for recontent in recontents:
+        rejson.append(recontent.name)
+    return HttpResponse(json.dumps(rejson), content_type='application/json')
 
 
 

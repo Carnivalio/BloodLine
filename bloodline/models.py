@@ -47,6 +47,7 @@ class BloodlineBank(models.Model):
     address = models.CharField(max_length=200, null=True, blank=True)
     phone = models.CharField(max_length=15, validators=[phone_regex], blank=True)
     email = models.EmailField(max_length=70, blank=False)
+    postcode = models.CharField(max_length=4, blank=False)
     user = models.ManyToManyField(BloodlineUser, through='BloodlineBlood')
     def __str__(self):
         return self.name
