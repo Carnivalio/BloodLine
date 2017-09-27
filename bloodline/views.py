@@ -98,7 +98,7 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         return HttpResponse('Activation link is invalid!')
 
 @csrf_exempt
-# TODO: might not safe here
+# TODO: might not safe here because of csrf
 def list_centre(request):
     key_words = request.POST.get('key_words')
     print(key_words)
@@ -109,5 +109,6 @@ def list_centre(request):
         rejson.append(recontent.name)
     return HttpResponse(json.dumps(rejson), content_type='application/json')
 
-
+def appointment(request):
+    return render(request, 'bloodline/appointment_request.html')
 
