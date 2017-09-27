@@ -91,6 +91,10 @@ button.navbar-toggle > span.icon-bar {
     color:white;
 }
 
+input[type="text"]{
+    color:black;
+}
+
 .login-box{
     margin-top: 100px;
 }
