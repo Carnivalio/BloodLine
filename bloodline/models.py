@@ -40,6 +40,7 @@ class BloodlineUser(AbstractUser):
     mobile = models.CharField(max_length=15, validators=[phone_regex], null=True, blank=True, help_text="Mobile/Phone number must be entered in the format: '+999999999'. Minimum 9 digits & up to 15 digits allowed.")
     address = models.CharField(max_length=200, null=True, blank=True, help_text="Put your address here, maximum 200 characters.")
     blood_type = models.IntegerField(choices=BLOOD_CHOICES, default=0, null=False, blank=False, help_text="Make sure you selected correct blood type.")
+    public_profile = models.BooleanField(default=False, help_text="Check if you want your profile to be public")
     verified = models.BooleanField(default=False, help_text="This field is to be checked by staff")
 
 class BloodlineBank(models.Model):

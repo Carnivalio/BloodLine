@@ -48,8 +48,7 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/user_delete/$', user_views.DeleteUser.as_view(), name='user_delete'),
     url(r'^login/$', auth_views.login, {'template_name': 'bloodline/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'bloodline_app:login'}, name='logout'),
-    url(r'^appointment/$', views.appointment, name='appointment'),
-    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    # url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
@@ -65,10 +64,13 @@ urlpatterns = [
         auth_views.password_reset_complete, name='password_reset_complete'),
 
     # Url Entries for social auth
-    url('', include('social.apps.django_app.urls', namespace='social')),
+    # url('', include('social.apps.django_app.urls', namespace='social')),
 
     # Url Entries for django administration
-    url('', include('django.contrib.auth.urls', namespace='auth')),
+    # url('', include('django.contrib.auth.urls', namespace='auth')),
+
+    # url('', views.index2),
+    url(r'^index2/', views.index2),
 
     url(r'^admin/', admin.site.urls),
 ]

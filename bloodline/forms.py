@@ -6,7 +6,7 @@ from .models import BloodlineUser, BloodlineBank, BloodlineBlood
 class BloodlineUserForm(UserCreationForm):
     class Meta:
         model = BloodlineUser
-        fields = ['email', 'username', 'password1', 'password2', 'gender', 'first_name', 'last_name', 'mobile', 'address', 'blood_type', 'verified', 'is_staff', 'is_active', 'is_superuser']
+        fields = ['email', 'username', 'password1', 'password2', 'gender', 'first_name', 'last_name', 'mobile', 'address', 'blood_type', 'public_profile', 'verified', 'is_staff', 'is_active', 'is_superuser']
 
 class BloodlineBankForm(forms.ModelForm):
     class Meta:

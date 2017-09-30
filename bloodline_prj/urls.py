@@ -19,6 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^bloodline/', include('bloodline.urls', namespace="bloodline_app")),
     url(r'^admin/', admin.site.urls),
-    url(r'^rest/', include('api.urls', namespace="social")),
+    url(r'^rest/', include('api.urls', namespace="rest_api")),
     url(r'^captcha/', include('captcha.urls')),
+    url(r'^api/v1/', include('social_django.urls', namespace='social')),
 ]

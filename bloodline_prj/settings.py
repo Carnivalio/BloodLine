@@ -41,7 +41,7 @@ EMAIL_FROM = "cristal.wu17@gmail.com"
 # Application definition
 
 INSTALLED_APPS = [
-    'bloodline.apps.BloodlineConfig',
+    # 'bloodline.apps.BloodlineConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,11 +49,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'social_django',
-    'social.apps.django_app.default',
+    # 'social.apps.django_app.default',
     'bootstrap3',
     'captcha',
-
+    # ADDITIONAL STARTS
+    'social_django',
+    'bloodline',
+    # ADDITIONAL ENDS
 ]
 
 MIDDLEWARE = [
@@ -91,6 +93,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        # 'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,47 +103,56 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 # Setting of Template Context Processors for Social Auth
-                'social.apps.django_app.context_processors.backends',
-                'social.apps.django_app.context_processors.login_redirect',
+                # 'social.apps.django_app.context_processors.backends',
+                # 'social.apps.django_app.context_processors.login_redirect',
+
+                # ADDITIONAL STARTS
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+                # ADDITIONAL ENDS
             ],
         },
     },
 ]
 
-SOCIAL_AUTH_PIPELINE = (
-    'social.pipeline.social_auth.social_details',
-    'social.pipeline.social_auth.social_uid',
-    'social.pipeline.social_auth.auth_allowed',
-    'social_auth.backends.pipeline.social.social_auth_user',
-    # 用户名与邮箱关联，文档说可能出现问题
-    # 'social_auth.backends.pipeline.associate.associate_by_email',
-    'social_auth.backends.pipeline.misc.save_status_to_session',
-    'social_auth.backends.pipeline.user.create_user',
-    'social_auth.backends.pipeline.social.associate_user',
-    'social_auth.backends.pipeline.social.load_extra_data',
-    'social_auth.backends.pipeline.user.update_user_details',
-    'social_auth.backends.pipeline.misc.save_status_to_session',
-
-)
+# SOCIAL_AUTH_PIPELINE = (
+#     'social.pipeline.social_auth.social_details',
+#     'social.pipeline.social_auth.social_uid',
+#     'social.pipeline.social_auth.auth_allowed',
+#     'social_auth.backends.pipeline.social.social_auth_user',
+#     # 用户名与邮箱关联，文档说可能出现问题
+#     # 'social_auth.backends.pipeline.associate.associate_by_email',
+#     'social_auth.backends.pipeline.misc.save_status_to_session',
+#     'social_auth.backends.pipeline.user.create_user',
+#     'social_auth.backends.pipeline.social.associate_user',
+#     'social_auth.backends.pipeline.social.load_extra_data',
+#     'social_auth.backends.pipeline.user.update_user_details',
+#     'social_auth.backends.pipeline.misc.save_status_to_session',
+# )
 
 # Authentication backends Setting
 AUTHENTICATION_BACKENDS = (
     # For Facebook Authentication
-    'social.backends.facebook.FacebookOAuth2',
+    # 'social.backends.facebook.FacebookOAuth2',
 
     # For Twitter Authentication
-    'social.backends.twitter.TwitterOAuth',
+    # 'social.backends.twitter.TwitterOAuth',
 
     # For Google Authentication
-    'social.backends.google.GoogleOpenId',
-    'social.backends.google.GoogleOAuth2',
-    'social.backends.google.GoogleOAuth',
+    # 'social.backends.google.GoogleOpenId',
+    # 'social.backends.google.GoogleOAuth2',
+    # 'social.backends.google.GoogleOAuth',
 
     # For WeChat
-    'social.backends.weixin.WeixinOAuth2',
+    # 'social.backends.weixin.WeixinOAuth2',
 
     # Default Django Auth Backends
+    # 'django.contrib.auth.backends.ModelBackend',
+
+    # ADDITIONAL STARTS
+    'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    # ADDITIONAL ENDS
 )
 
 # Autentication key pair of Twitter
@@ -194,6 +206,22 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+# AUTHENTICATION_BACKENDS = (
+#     'social_core.backends.google.GoogleOAuth2',
+#     'django.contrib.auth.backends.ModelBackend',
+# )
+
+# ADDITIONAL STARTS
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "1041450590918-mq5kdrjhe98fpb5bv6f3i8do67r55pm1.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "DgCWdnK2tyE9zUTUdNN4HBri"
+
+LOGIN_REDIRECT_URL = '/bloodline'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+
+# SOCIAL_AUTH_URL_NAMESPACE = 'bloodline_app:social'
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+# ADDITIONAL ENDS
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
