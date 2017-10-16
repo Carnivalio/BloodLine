@@ -48,27 +48,24 @@ BloodLine focused on helping those who in need, for example, there are some peop
 **TEMPORARY**
 ## Front-End Functionality
 
-## User
+## Administrator
 
-### Index Page
+- Able to add, edit, and delete User, Bank, and Blood Data
+
+## User Pages (Administrator Only)
+
+### User Index Page (Administrator Only)
 
 - Show the list of the user
 - User list is click-able, redirecting user to the User Detail page
 - Feature to add new user
 
-### Detail Page
+### User Detail Page (Administrator Only)
 
 - Show all details of the selected user
 
-### Add User Page
+### Create User Page (Administrator Only)
 - Self explanatory, this page is to be used for adding user
-
-## Administrator
-
-- Able to add, edit, and delete User, Bank, and Blood Data
-- Able to categorize User data by blood type and search the User by its username
-- Able to search the bank by its Name
-- Able to categorize and searcy the Blood by its status
 
 ## Back-End Functionality
 
