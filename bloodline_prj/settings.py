@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'social_django',
     'bloodline',
     # ADDITIONAL ENDS
+    'datetimewidget',
 ]
 
 MIDDLEWARE = [
@@ -255,3 +256,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+TWITTER_APP_KEY = 'P71z6oUt3Rf4viFJ0ICB9dncR'
+TWITTER_APP_SECRET = 'FT7tAPWwFYFHgGLClj0JrcWeGaLZJtTGPrcxMQF4z86VuHvgcs'
+TWITTER_OAUTH_TOKEN = '920042363891752960-POj9JCMGsreeGzbkEw46mSGbgOuzUKW'
+TWITTER_OAUTH_TOKEN_SECRET = 'yPZ4wc43KBcXdtz7liAT4ijzhbrWj294r2cmmTtYdQzE0'
