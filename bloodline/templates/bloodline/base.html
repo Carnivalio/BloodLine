@@ -55,8 +55,8 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active home-btn"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                    <li class="donate-btn"><a href="#"><span class="glyphicon glyphicon-heart"></span> Donate</a></li>
+                    <li class="active home-btn"><a href={% url 'bloodline_app:home' %}><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li class="donate-btn"><a href={% url 'bloodline_app:appointment' %}><span class="glyphicon glyphicon-heart"></span> Donate</a></li>
                     <li class="about-btn"><a href="#"><span class="glyphicon glyphicon-info-sign"></span> About
                         BloodLine</a></li>
                     <li class="find-centre-btn"><a href="#"><span class="glyphicon glyphicon-search"></span> Find a
@@ -64,7 +64,7 @@
                     <li class="search-database-btn"><a href="#"><span class="glyphicon glyphicon-book"></span> Rare
                         Blood Donor Database</a></li>
                     <li class="login-btn">
-                        <button type="button" class="btn btn-danger">Log In</button>
+                        <a href={% url 'bloodline_app:login' %}><button type="button" class="btn btn-danger">Log In</button></a>
                     </li>
                 </ul>
             </div>

@@ -78,6 +78,8 @@ def test(request):
 def base_search(request):
     return render(request, 'bloodline/base_search.html')
 
+def appointment(request):
+    return render(request, 'bloodline/appointment_request.html')
 
 def activate(request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
     try:

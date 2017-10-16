@@ -131,6 +131,17 @@ button.navbar-toggle > span.icon-bar {
     filter: Alpha(opacity=80);
 }
 
+input[type="text"]{
+    color:black;
+}
+
+#appointment_accordion{
+    margin-top: 80px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .red {
     color: red;
 }
