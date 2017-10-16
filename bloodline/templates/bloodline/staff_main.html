@@ -1,0 +1,33 @@
+﻿{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+<div id="header">
+    <div id="branding">
+    	<h1>Staff Function List</h1>
+    </div>
+</div>
+
+<div id="content" class="flex">
+	<div id="content-main">
+			<table>
+				<thead>
+					<tr>
+						<th>Functions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+                		<td><input onclick="location.href='{% url 'bloodline_app:user_list' %}';" type="button" value="User List" /></td>
+            		</tr>
+             		<tr>
+                		<td><input onclick="location.href='{% url 'bloodline_app:bank_list' %}';" type="button" value="Bank List" /></td>
+            		</tr>
+             		<tr>
+                		<td><input onclick="location.href='{% url 'bloodline_app:blood_list' %}';" type="button" value="Blood List" /></td>
+            		</tr>
+				</tbody>
+			</table>
+	</div>
+</div>

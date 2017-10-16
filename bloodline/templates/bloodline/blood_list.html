@@ -1,0 +1,51 @@
+﻿{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+<div id="header">
+    <div id="branding">
+    	<h1>Blood List</h1>
+    </div>
+</div>
+
+<div id="content" class="flex">
+	<div id="content-main">
+		{% if blood_list %}
+			<table>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>User</th>
+						<th>Bank</th>
+						<th>Donor Date</th>
+						<th>Donor Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for blood in blood_list %}
+					<tr>
+						<td>{{ blood.id }}</td>
+						<td><a href="{% url 'bloodline_app:blood_detail' blood.id %}">{{ blood.user.username }}</a></td>
+						<td><a href="{% url 'bloodline_app:blood_detail' blood.id %}">{{ blood.bank.name }}</a></td>
+						<td><a href="{% url 'bloodline_app:blood_detail' blood.id %}">{{ blood.donor_date }}</a></td>
+						<td><a href="{% url 'bloodline_app:blood_detail' blood.id %}">{{ blood.get_blood_status }}</a></td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td></td>
+                		<td><input onclick="location.href='{% url 'bloodline_app:blood_create' %}';" type="button" value="Create Blood Donation" /></td>
+            		</tr>
+            		<tr>
+						<td></td>
+                		<td><input onclick="location.href='{% url 'bloodline_app:staff_main' %}';" type="button" value="Back" /></td>
+            		</tr>
+				</tbody>
+			</table>
+		{% else %}
+		    <p>No blood registered.</p>
+		    <input onclick="location.href='{% url 'bloodline_app:blood_create' %}';" type="button" value="Create Blood Donation" />
+		    <input onclick="location.href='{% url 'bloodline_app:staff_main' %}';" type="button" value="Back" />
+		{% endif %}
+	</div>
+</div>

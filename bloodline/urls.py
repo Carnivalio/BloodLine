@@ -2,6 +2,7 @@
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 
+from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 
@@ -9,6 +10,8 @@ from bloodline.models import BloodlineUser, BloodlineBank, BloodlineBlood
 
 from bloodline import views
 from bloodline import user_views
+from bloodline import bank_views
+from bloodline import blood_views
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
@@ -42,10 +45,26 @@ urlpatterns = [
     url(r'^header/', views.header),
     url(r'^base-search/', views.base_search),
 
-    url(r'^(?P<pk>[0-9]+)/$', user_views.DetailView.as_view(), name='user_detail'),
-    url(r'^user_create/$', user_views.CreateUser.as_view(), name='user_create'),
-    url(r'^(?P<pk>\d+)/user_update/$', user_views.UpdateUser.as_view(), name='user_update'),
-    url(r'^(?P<pk>\d+)/user_delete/$', user_views.DeleteUser.as_view(), name='user_delete'),
+    url(r'^staff/users/(?P<pk>\d+)/user_update/$', user_passes_test(lambda u: u.is_staff) (user_views.UpdateUser.as_view()), name='user_update'),
+    url(r'^staff/users/(?P<pk>\d+)/user_delete/$', user_passes_test(lambda u: u.is_staff) (user_views.DeleteUser.as_view()), name='user_delete'),
+    url(r'^staff/users/(?P<pk>\d+)/$', user_passes_test(lambda u: u.is_staff) (user_views.DetailUser.as_view()), name='user_detail'),
+    url(r'^staff/users/user_create/$', user_passes_test(lambda u: u.is_staff) (user_views.CreateUser.as_view()), name='user_create'),
+    url(r'^staff/users/$', user_passes_test(lambda u: u.is_staff) (user_views.UserListView.as_view()), name='user_list'),
+
+    url(r'^staff/banks/(?P<pk>\d+)/bank_update/$', user_passes_test(lambda u: u.is_staff) (bank_views.UpdateBank.as_view()), name='bank_update'),
+    url(r'^staff/banks/(?P<pk>\d+)/bank_delete/$', user_passes_test(lambda u: u.is_staff) (bank_views.DeleteBank.as_view()), name='bank_delete'),
+    url(r'^staff/banks/(?P<pk>\d+)/$', user_passes_test(lambda u: u.is_staff) (bank_views.DetailBank.as_view()), name='bank_detail'),
+    url(r'^staff/banks/bank_create/$', user_passes_test(lambda u: u.is_staff) (bank_views.CreateBank.as_view()), name='bank_create'),
+    url(r'^staff/banks/$', user_passes_test(lambda u: u.is_staff) (bank_views.BankListView.as_view()), name='bank_list'),
+
+    url(r'^staff/bloods/(?P<pk>\d+)/blood_update/$', user_passes_test(lambda u: u.is_staff) (blood_views.UpdateBlood.as_view()), name='blood_update'),
+    url(r'^staff/bloods/(?P<pk>\d+)/blood_delete/$', user_passes_test(lambda u: u.is_staff) (blood_views.DeleteBlood.as_view()), name='blood_delete'),
+    url(r'^staff/bloods/(?P<pk>\d+)/$', user_passes_test(lambda u: u.is_staff) (blood_views.DetailBlood.as_view()), name='blood_detail'),
+    url(r'^staff/bloods/blood_create/$', user_passes_test(lambda u: u.is_staff) (blood_views.CreateBlood.as_view()), name='blood_create'),
+    url(r'^staff/bloods/$', user_passes_test(lambda u: u.is_staff) (blood_views.BloodListView.as_view()), name='blood_list'),
+
+    url(r'^staff/', views.staff_main, name='staff_main'),
+
     url(r'^login/$', auth_views.login, {'template_name': 'bloodline/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'bloodline_app:login'}, name='logout'),
     # url(r'^oauth/', include('social_django.urls', namespace='social')),

@@ -11,7 +11,7 @@ class BloodlineUserForm(UserCreationForm):
 class BloodlineBankForm(forms.ModelForm):
     class Meta:
         model = BloodlineBank
-        fields = ['name', 'address', 'phone', 'email', 'user']
+        fields = ['name', 'address', 'phone', 'email', 'postcode']
 
 class BloodlineBloodForm(forms.ModelForm):
     class Meta:

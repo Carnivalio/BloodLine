@@ -33,7 +33,7 @@
 				</tr>
 				<tr>
 					<td>Gender</td>
-					<td><b>{{ bloodlineuser.gender }}</b></td>
+					<td><b>{{ bloodlineuser.get_gender }}</b></td>
 				</tr>
 				<tr>
 					<td>First Name</td>
@@ -53,7 +53,7 @@
 				</tr>
 				<tr>
 					<td>Blood Type</td>
-					<td><b>{{ bloodlineuser.blood_type }}</b></td>
+					<td><b>{{ bloodlineuser.get_blood_type }}</b></td>
 				</tr>
 				<tr>
 					<td>Verified</td>
@@ -77,7 +77,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input onclick="location.href='{% url 'bloodline_app:index' %}';" type="button" value="Back" /></td>
+					<td><input onclick="location.href='{% url 'bloodline_app:user_list' %}';" type="button" value="Back" /></td>
 				</tr>
 			</tbody>
 		</table>

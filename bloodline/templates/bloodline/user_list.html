@@ -1,0 +1,51 @@
+﻿{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+<div id="header">
+    <div id="branding">
+    	<h1>User List</h1>
+    </div>
+</div>
+
+<div id="content" class="flex">
+	<div id="content-main">
+		{% if user_list %}
+			<table>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Username</th>
+						<th>Blood Type</th>
+						<th>Verified</th>
+						<th>Staff</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in user_list %}
+					<tr>
+						<td>{{ user.id }}</td>
+						<td><a href="{% url 'bloodline_app:user_detail' user.id %}">{{ user.username }}</a></td>
+						<td><a href="{% url 'bloodline_app:user_detail' user.id %}">{{ user.get_blood_type }}</a></td>
+						<td><a href="{% url 'bloodline_app:user_detail' user.id %}">{{ user.verified }}</a></td>
+						<td><a href="{% url 'bloodline_app:user_detail' user.id %}">{{ user.is_staff }}</a></td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td></td>
+                		<td><input onclick="location.href='{% url 'bloodline_app:user_create' %}';" type="button" value="Create User" /></td>
+            		</tr>
+					<tr>
+						<td></td>
+                		<td><input onclick="location.href='{% url 'bloodline_app:staff_main' %}';" type="button" value="Back" /></td>
+            		</tr>
+				</tbody>
+			</table>
+		{% else %}
+		    <p>No user registered.</p>
+		    <input onclick="location.href='{% url 'bloodline_app:user_create' %}';" type="button" value="Create User" />
+		    <input onclick="location.href='{% url 'bloodline_app:staff_main' %}';" type="button" value="Back" />
+		{% endif %}
+	</div>
+</div>

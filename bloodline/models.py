@@ -1,5 +1,6 @@
 import datetime
 
+from django.template.defaulttags import register
 from django.db import models
 from django.forms import ModelForm
 from django.utils import timezone
@@ -43,6 +44,16 @@ class BloodlineUser(AbstractUser):
     public_profile = models.BooleanField(default=False, help_text="Check if you want your profile to be public")
     verified = models.BooleanField(default=False, help_text="This field is to be checked by staff")
 
+    @register.filter
+    def get_gender(self):
+        return dict(GENDER_CHOICES).get(self.gender)
+        # return GENDER_CHOICES[self.gender][1]
+
+    @register.filter
+    def get_blood_type(self):
+        return dict(BLOOD_CHOICES).get(self.blood_type)
+        # return BLOOD_CHOICES[self.blood_type][1]
+
 class BloodlineBank(models.Model):
     name = models.CharField(max_length=80, null=False, blank=False, unique=True)
     address = models.CharField(max_length=200, null=True, blank=True)
@@ -59,6 +70,10 @@ class BloodlineBlood(models.Model):
     donor_date = models.DateTimeField('donor date', null=False, blank=False, unique=True)
     blood_status = models.IntegerField(choices=STATUS_CHOICES, default=0, null=False, blank=False)
     def __str__(self):
-        # return dict(STATUS_CHOICES).get(self.blood_status)
-        return self.user.username
+        return self.donor_date
+
+    @register.filter
+    def get_blood_status(self):
+        # return BLOOD_CHOICES[self.blood_type][1]
+        return dict(STATUS_CHOICES).get(self.blood_status)
 

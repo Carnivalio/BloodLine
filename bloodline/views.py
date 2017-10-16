@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
@@ -27,13 +28,9 @@ from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
 User = get_user_model()
 
 
-class IndexView(generic.ListView):
-    template_name = 'bloodline/index.html'
-    context_object_name = 'user_list'
-
-    def get_queryset(self):
-        return BloodlineUser.objects.all().order_by('-pk')[:10]
-
+@user_passes_test(lambda u: u.is_staff)
+def staff_main(request):
+    return render(request, 'bloodline/staff_main.html')
 
 def signup(request):
     if request.method == 'POST':
