@@ -131,8 +131,8 @@ button.navbar-toggle > span.icon-bar {
     filter: Alpha(opacity=80);
 }
 
-input[type="text"]{
-    color:black;
+#login_form input[type="text"],#login_form input[type="password"]{
+    color:black !important;
 }
 
 #appointment_accordion{

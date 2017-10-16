@@ -59,7 +59,7 @@ def signup(request):
             # return redirect('bloodline_app:home')
     else:
         form = SignUpForm()
-    return render(request, 'bloodline/signup.html', {'form': form})
+    return render(request, 'registration/signup.html', {'form': form})
 
 
 @login_required

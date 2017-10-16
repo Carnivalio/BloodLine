@@ -65,7 +65,7 @@ urlpatterns = [
 
     url(r'^staff/', views.staff_main, name='staff_main'),
 
-    url(r'^login/$', auth_views.login, {'template_name': 'bloodline/login.html'}, name='login'),
+    url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'bloodline_app:login'}, name='logout'),
     url(r'^appointment/$', views.appointment, name='appointment'),
     url(r'^signup/$', views.signup, name='signup'),
