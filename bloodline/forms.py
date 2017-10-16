@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from datetimewidget.widgets import DateTimeWidget
 
 from .models import BloodlineUser, BloodlineBank, BloodlineBlood
 
@@ -17,6 +18,7 @@ class BloodlineBloodForm(forms.ModelForm):
     class Meta:
         model = BloodlineBlood
         fields = ['user', 'bank', 'donor_date', 'blood_status']
+        widgets = {'donor_date': DateTimeWidget(attrs = {'id':'id_dateTimeField'}, bootstrap_version=3)}
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')

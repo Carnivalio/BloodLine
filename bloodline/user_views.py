@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView
 from django.views.generic.edit import DeleteView
 from django.views.generic.edit import UpdateView
 
+
 from .forms import BloodlineUserForm
 from .models import BloodlineUser
 
@@ -54,4 +55,5 @@ class DeleteUser(DeleteView):
     model = BloodlineUser
     success_url = reverse_lazy('bloodline_app:user_list')
     template_name_suffix = '_confirm_delete'
+
 

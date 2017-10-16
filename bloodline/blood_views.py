@@ -4,6 +4,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import DeleteView
 from django.views.generic.edit import UpdateView
+from datetimewidget.widgets import DateTimeWidget
 
 from .forms import BloodlineUserForm, BloodlineBankForm, BloodlineBloodForm
 from .models import BloodlineUser, BloodlineBank, BloodlineBlood
@@ -41,7 +42,9 @@ class CreateBlood(CreateView):
 class UpdateBlood(UpdateView):
     template_name = 'bloodline/blood_update.html'
     model = BloodlineBlood
-    fields = ['user', 'bank', 'donor_date', 'blood_status']
+    form_class = BloodlineBloodForm
+    # fields = ['user', 'bank', 'donor_date', 'blood_status']
+    # widgets = {'donor_date': DateTimeWidget(attrs = {'id':'id_dateTimeField'}, bootstrap_version=3)}
     template_name_suffix = '_update_form'
 
     def get_success_url(self):

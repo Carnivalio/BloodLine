@@ -59,7 +59,7 @@ def signup(request):
             # return redirect('bloodline_app:home')
     else:
         form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'bloodline/signup.html', {'form': form})
 
 
 @login_required
@@ -78,8 +78,6 @@ def test(request):
 def base_search(request):
     return render(request, 'bloodline/base_search.html')
 
-def appointment(request):
-    return render(request, 'bloodline/appointment_request.html')
 
 def activate(request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
     try:
