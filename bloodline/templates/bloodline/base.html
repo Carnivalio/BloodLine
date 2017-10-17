@@ -92,6 +92,7 @@
 {% endblock %}
 {% block search-box %}
 
+    <!-- Search box container -->
     <div class="search-container hide container">
         <div class="row">
             <div class="col-md-2 col-md-offset-10">
@@ -108,15 +109,14 @@
                 <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
             </form>
         </div>
+
         <div class="row">
             <ul class="list-group search-result-list col-md-8 col-md-offset-2">
-
             </ul>
-
         </div>
-
     </div>
 {% endblock %}
+
 <!-- Middle content module -->
 <div id="myCarousel" class="carousel slide bg" data-ride="carousel">
     {% block content %}{% endblock %}
