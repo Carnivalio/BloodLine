@@ -1,53 +1,65 @@
-﻿{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+﻿{% extends 'bloodline/base.html' %}
 
-<div id="header">
-    <div id="branding">
-    	<h1>Blood Details • {{ bloodlineblood.user }}</h1>
+{% block content %}
+    <!-- <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form> -->
+
+    {{ form.media }}
+    <div class="container" id="blood_create_box">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div id="header">
+                    <div id="branding">
+                        <h1>Blood Details • {{ bloodlineblood.user }}</h1>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Info</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>User</td>
+                        <td><b>{{ bloodlineblood.user }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Bank</td>
+                        <td><b>{{ bloodlineblood.bank }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Donor Date</td>
+                        <td><b>{{ bloodlineblood.donor_date }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Blood Status</td>
+                        <td><b>{{ bloodlineblood.get_blood_status }}</b></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input
+                                onclick="location.href='{% url 'bloodline_app:blood_update' pk=bloodlineblood.pk %}';"
+                                type="button" value="Update Blood"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input
+                                onclick="location.href='{% url 'bloodline_app:blood_delete' pk=bloodlineblood.pk %}';"
+                                type="button" value="Delete Blood"/></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input onclick="location.href='{% url 'bloodline_app:blood_list' %}';" type="button"
+                                   value="Back"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-</div>
 
-<div id="content" class="flex">
-	<div id="content-main">
-		<table>
-			<thead>
-				<tr>
-					<th>Info</th>
-					<th>Value</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>User</td>
-					<td><b>{{ bloodlineblood.user }}</b></td>
-				</tr>
-				<tr>
-					<td>Bank</td>
-					<td><b>{{ bloodlineblood.bank }}</b></td>
-				</tr>
-				<tr>
-					<td>Donor Date</td>
-					<td><b>{{ bloodlineblood.donor_date }}</b></td>
-				</tr>
-				<tr>
-					<td>Blood Status</td>
-					<td><b>{{ bloodlineblood.get_blood_status }}</b></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input onclick="location.href='{% url 'bloodline_app:blood_update' pk=bloodlineblood.pk %}';" type="button" value="Update Blood" /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input onclick="location.href='{% url 'bloodline_app:blood_delete' pk=bloodlineblood.pk %}';" type="button" value="Delete Blood" /></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td><input onclick="location.href='{% url 'bloodline_app:blood_list' %}';" type="button" value="Back" /></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+{% endblock %}

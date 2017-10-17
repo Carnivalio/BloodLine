@@ -20,7 +20,8 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{% static 'bloodline/css/style.css' %}">
-
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css"/>
     <!-- jQuery -->
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -70,7 +71,7 @@
                             </a>
                         </li>
                         <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-                        {% else %}
+                    {% else %}
                         <li class="login-btn">
                             <a href={% url 'bloodline_app:logout' %}>
                                 <button type="button" class="btn btn-danger">Log In</button>

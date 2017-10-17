@@ -1,33 +1,38 @@
-﻿<!-- <form action="" method="post">{% csrf_token %}
+﻿{% extends 'bloodline/base.html' %}
+
+{% block content %}
+    <!-- <form action="" method="post">{% csrf_token %}
     <p>Are you sure you want to delete "{{ object }}"?</p>
     <input type="submit" value="Confirm" />
 </form> -->
+    <!-- <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form> -->
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
-
-<div id="header">
-    <div id="branding">
-    	<h1>Delete Blood Page</h1>
+    {{ form.media }}
+    <div class="container" id="staff_function_list">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div id="header">
+                    <div id="branding">
+                        <h1>Delete Blood</h1>
+                    </div>
+                </div>
+                <form method="POST" class="post-form">{% csrf_token %}
+                <table>
+                    <tr>
+                        <td><p>Are you sure you want to delete "{{ object }}"?</p></td>
+                    </tr>
+                    <tr>
+                        <td><input
+                                onclick="location.href='{% url 'bloodline_app:blood_detail' pk=bloodlineblood.pk %}';"
+                                type="button" value="Back"/> <input type="submit" value="Confirm"/></td>
+                    </tr>
+                </table>
+            </form>
+            </div>
+        </div>
     </div>
-</div>
 
-<div id="content" class="flex">
-	<div id="content-main">
-{% block content %}
-    <h1>Delete Blood</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        <table>
-        <tr>
-            <td><p>Are you sure you want to delete "{{ object }}"?</p></td>
-        </tr>
-        <tr>
-            <td><input onclick="location.href='{% url 'bloodline_app:blood_detail' pk=bloodlineblood.pk %}';" type="button" value="Back" /> <input type="submit" value="Confirm" /></td>
-        </tr>
-        </table>
-    </form>
 {% endblock %}
-	</div>
-</div>
