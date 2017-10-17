@@ -5,12 +5,11 @@ from django.contrib.auth import views as auth_views
 from rest_framework import routers, serializers, viewsets
 
 from . import bank_views, blood_views, user_views, views
-from .models import BloodlineUser
+from .models import BloodlineUser, BloodlineBank, BloodlineBlood
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
-
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -18,15 +17,34 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = BloodlineUser
         fields = ('id', 'username', 'first_name', 'last_name', 'gender', 'blood_type')
 
+class BankSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = BloodlineBank
+        fields = ('id', 'name', 'address', 'postcode', 'phone', 'email')
+
+class BloodSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = BloodlineBlood
+        fields = ('id', 'user', 'bank', 'donation_choice', 'donor_date', 'blood_status')
+
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
     queryset = BloodlineUser.objects.all()
     serializer_class = UserSerializer
 
+class BankViewSet(viewsets.ModelViewSet):
+    queryset = BloodlineBank.objects.all()
+    serializer_class = BankSerializer
+
+class BloodViewSet(viewsets.ModelViewSet):
+    queryset = BloodlineBlood.objects.all()
+    serializer_class = BloodSerializer
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
+router.register(r'banks', BankViewSet)
+router.register(r'bloods', BloodViewSet)
 
 app_name = 'bloodline'
 urlpatterns = [

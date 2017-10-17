@@ -70,9 +70,9 @@ class BloodlineBank(models.Model):
     # bank_id = models.AutoField(max_length=10, null=False, blank=False, unique=True, primary_key=True)
     name = models.CharField(max_length=80, null=False, blank=False, unique=True, help_text="Put the blood bank name here, maximum 80 characters.")
     address = models.CharField(max_length=200, null=True, blank=True, help_text="Put your address here, maximum 200 characters.")
+    postcode = models.CharField(max_length=4, blank=False, help_text="Postcode format: XXXX.")
     phone = models.CharField(max_length=15, validators=[phone_regex], blank=True, help_text="Mobile/Phone number must be entered in the format: '+999999999'. Minimum 9 digits & up to 15 digits allowed.")
     email = models.EmailField(max_length=70, blank=False)
-    postcode = models.CharField(max_length=4, blank=False, help_text="Postcode format: XXXX.")
     user = models.ManyToManyField(BloodlineUser, through='BloodlineBlood')
 
     def __str__(self):
