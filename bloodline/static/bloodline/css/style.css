@@ -42,6 +42,18 @@ html, body {
     background-size: cover;
 }
 
+#login_form input[type="text"],#login_form input[type="password"]{
+    color:black !important;
+}
+
+#signup_form input[type="text"],#signup_form input[type="password"], #signup_form input[type="email"]{
+    color:black !important;
+}
+
+#signup_form select{
+    color: black;
+}
+
 .my-navbar {
     padding: 20px 0;
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
