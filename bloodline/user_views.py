@@ -28,7 +28,7 @@ class CreateUser(CreateView):
 class UpdateUser(UpdateView):
     template_name = 'bloodline/user_template/user_update.html'
     model = BloodlineUser
-    fields = ['username', 'email', 'password', 'gender', 'first_name', 'last_name', 'mobile', 'address', 'blood_type', 'public_profile', 'verified', 'is_staff']
+    fields = ['username', 'email', 'password', 'gender', 'first_name', 'last_name', 'mobile', 'address', 'blood_type', 'public_profile', 'verified', 'is_active', 'is_staff']
     template_name_suffix = '_update_form'
 
     def get_success_url(self):
