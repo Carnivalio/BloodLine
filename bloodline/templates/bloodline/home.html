@@ -1,15 +1,14 @@
 {% extends 'bloodline/base.html' %}
-
 {% block content %}
     <!-- Carousel indicators -->
-    <div id="middle-ad">
+<!--     <div id="middle-ad">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+        </ol> -->
         <!-- Carousel items -->
-        <div class="carousel-inner">
+<!--         <div class="carousel-inner">
             <div class="item active item1">
                 <img class="img-responsive center-block" src="../../../static/bloodline/img/learn.gif"
                      alt="First slide">
@@ -21,18 +20,58 @@
             <div class="item item3">
                 <img src="/wp-content/uploads/2014/07/poster_2.png" alt="Third slide">
             </div>
-        </div>
+        </div> -->
 
         <!-- Carousel navigation -->
-        <a class="carousel-control left" href="#myCarousel"
+<!--         <a class="carousel-control left" href="#myCarousel"
            data-slide="prev">&lsaquo;
         </a>
         <a class="carousel-control right" href="#myCarousel"
            data-slide="next">&rsaquo;
         </a>
+    </div> -->
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+{% if user.is_authenticated %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+<div id="content" class="flex">
+    <div id="content-main">
+        {% if donor_list %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Bank</th>
+                        <th>Donation Choice</th>
+                        <th>Date</th>
+                        <th>Blood Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for donor_entry in donor_list %}
+                    <tr>
+                        <td>{{ donor_entry.id }}</td>
+                        <td>{{ donor_entry.bank }}</td>
+                        <td>{{ donor_entry.get_donation_choice }}</td>
+                        <td>{{ donor_entry.donor_date }}</td>
+                        <td>{{ donor_entry.get_blood_status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
     </div>
+</div>
 
-
-
+{% endif %}
     {{ block.super }}
 {% endblock %}

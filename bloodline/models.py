@@ -91,7 +91,7 @@ class BloodlineBlood(models.Model):
     blood_status = models.IntegerField(choices=STATUS_CHOICES, default=0, null=False, blank=False, help_text="Set the status of the donated blood.")
 
     @register.filter
-    def get_blood_status(self):
+    def get_donation_choice(self):
         return dict(DONATION_CHOICES).get(self.donation_choices)
 
     @register.filter

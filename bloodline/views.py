@@ -18,9 +18,10 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 # from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
 # from django.views.generic.edit import View
+from django.views import generic
 
 # from .forms import SignUpForm
-from .models import BloodlineUser, BloodlineBank, BLOOD_CHOICES#, BloodlineAppointment
+from .models import BloodlineUser, BloodlineBank, BloodlineBlood, BLOOD_CHOICES#, BloodlineAppointment
 from .tokens import account_activation_token
 # from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
 from .forms import BloodlineUserForm
@@ -60,9 +61,17 @@ def signup(request):
     return render(request, 'bloodline/registration/signup.html', {'form': form})
 
 
-@login_required
-def home(request):
-    return render(request, 'bloodline/home.html')
+# @login_required
+# def home(request):
+#     return render(request, 'bloodline/home.html')
+
+class Home(generic.ListView):
+    template_name = 'bloodline/home.html'
+    context_object_name = 'donor_list'
+
+    def get_queryset(self):
+        return BloodlineBlood.objects.filter(user=self.request.user).order_by('-donor_date')[:10]
+        # return BloodlineBlood.objects.filter(user=self.request.user)[:10]
 
 def header(request):
     return render(request, 'bloodline/header.html')
