@@ -47,7 +47,7 @@ html, body {
 }
 
 .login-box{
-    margin-top: -150px;
+    margin-top: 50px;
 }
 
 #appointment_box select{
@@ -69,7 +69,7 @@ html, body {
 }
 
 #signup_form input {
-    margin-top: 10px;
+    margin-top: 2px;
     opacity: 0.8;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
@@ -80,6 +80,10 @@ html, body {
 .my-navbar {
     padding: 20px 0;
     transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+
+.prompt{
+    color: white !important;
 }
 
 .my-navbar a {
@@ -136,6 +140,10 @@ button.navbar-toggle > span.icon-bar {
 
 .signup-prompt {
     color: white;
+}
+
+.signup-box{
+    margin-top: 50px;
 }
 
 .login-box {
