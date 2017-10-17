@@ -87,7 +87,7 @@ urlpatterns = [
 
     url(r'^list_centre$', views.list_centre, name='list_centre'),
     url(r'^list_blood$', views.list_blood, name='list_blood'),
-    url(r'^appointment/$', blood_views.CreateBloodPublic.as_view(), name='appointment'),
+    url(r'^appointment/$', blood_views.CreateBloodPublic, name='appointment'),
 
     url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
