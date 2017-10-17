@@ -27,12 +27,19 @@
                     {% endfor %}
                     <br>
                     <input type="submit" class="btn btn-danger" value="Log In"/>
-                    <input type="button" class="btn btn-info" onclick="location.href='{% url 'social:begin' 'google-oauth2' %}'" value="Log In with Google">
-                    <a class="forgot-passward-prompt prompt" href="{% url 'bloodline_app:password_reset' %}">Forgot password?</a>
+                    <a class="forgot-passward-prompt prompt" href="{% url 'bloodline_app:password_reset' %}">Forgot
+                        password?</a>
+                    <br>
+                    <br>
+                    <input type="button" class="btn btn-info"
+                           onclick="location.href='{% url 'social:begin' 'google-oauth2' %}'"
+                           value="Log In with Google">
                     <br>
                     <br>
                     <a class="signup-prompt prompt" href={% url 'bloodline_app:signup' %}>New to My Site?</a>
-                    <a class="signup-btn" href={% url 'bloodline_app:signup' %}><input type="button" class="btn btn-success" value="Sign Up"/></a>
+                    <a class="signup-btn" href={% url 'bloodline_app:signup' %}><input type="button"
+                                                                                       class="btn btn-success"
+                                                                                       value="Sign Up"/></a>
                 </form>
             </div>
         </div>

@@ -46,10 +46,6 @@ html, body {
     color: black !important;
 }
 
-.login-box{
-    margin-top: 50px;
-}
-
 #appointment_box select{
     color: black;
 }
