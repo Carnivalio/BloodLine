@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $('#myCarousel').carousel({interval: 100000});
 
+
     $('.search-box-close').click(function () {
         $('.search-container').addClass("hide");
         if ($('.search-input').hasClass("find-centre")) {
@@ -43,12 +44,6 @@ $(document).ready(function () {
         return false;
     });
 
-
-
-    $('.popup-close').keyup(function(){
-        $(".search-input").val('');
-        $(".search-result-list").children().remove();
-    });
 
 
 

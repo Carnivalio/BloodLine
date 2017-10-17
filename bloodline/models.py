@@ -38,6 +38,12 @@ GENDER_CHOICES = (
     (2, 'Female'),
 )
 
+DONATION_CHOICES = (
+    (0, 'Whole Blood'),
+    (1, 'Plasma'),
+    (2, 'Platelet'),
+)
+
 twitter = Twython(settings.TWITTER_APP_KEY, settings.TWITTER_APP_SECRET, settings.TWITTER_OAUTH_TOKEN, settings.TWITTER_OAUTH_TOKEN_SECRET)
 
 class BloodlineUser(AbstractUser):
@@ -60,6 +66,7 @@ class BloodlineUser(AbstractUser):
         return dict(BLOOD_CHOICES).get(self.blood_type)
 
 class BloodlineBank(models.Model):
+    bank_id = models.AutoField(max_length=10, null=False, blank=False, unique=True, primary_key=True)
     name = models.CharField(max_length=80, null=False, blank=False, unique=True, help_text="Put the blood bank name here, maximum 80 characters.")
     address = models.CharField(max_length=200, null=True, blank=True, help_text="Put your address here, maximum 200 characters.")
     phone = models.CharField(max_length=15, validators=[phone_regex], blank=True, help_text="Mobile/Phone number must be entered in the format: '+999999999'. Minimum 9 digits & up to 15 digits allowed.")
@@ -69,6 +76,11 @@ class BloodlineBank(models.Model):
 
     def __str__(self):
         return self.name
+
+class BloodlineAppointment(models.Model):
+    bank_id = models.ForeignKey(BloodlineBank)
+    user = models.ManyToManyField(BloodlineUser)
+    time = models.DateTimeField()
 
 class BloodlineBlood(models.Model):
     user = models.ForeignKey(BloodlineUser, on_delete=models.CASCADE, help_text="Choose which user donated their blood.")
