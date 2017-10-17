@@ -1,36 +1,41 @@
 {% extends 'bloodline/base.html' %}
 {% block content %}
 {% if user.is_authenticated %}
-
-<div id="content" class="flex">
-    <div id="content-main">
-        {% if donor_list %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Bank</th>
-                        <th>Donation Choice</th>
-                        <th>Date</th>
-                        <th>Blood Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for donor_entry in donor_list %}
-                    <tr>
-                        <td>{{ donor_entry.id }}</td>
-                        <td>{{ donor_entry.bank }}</td>
-                        <td>{{ donor_entry.get_donation_choice }}</td>
-                        <td>{{ donor_entry.donor_date }}</td>
-                        <td>{{ donor_entry.get_blood_status }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% endif %}
+<br><br><br><br><br><br><br><br>
+<div class="container" id="staff_function_list">
+    <div class="row">
+        <div class="col-md-7 col-md-offset-0">
+            <div id="content" class="flex">
+                <div id="content-main">
+                    {% if donor_list %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Bank</th>
+                                <th>Donation Choice</th>
+                                <th>Date</th>
+                                <th>Blood Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for donor_entry in donor_list %}
+                            <tr>
+                                <td>{{ donor_entry.id }}</td>
+                                <td>{{ donor_entry.bank }}</td>
+                                <td>{{ donor_entry.get_donation_choice }}</td>
+                                <td>{{ donor_entry.donor_date }}</td>
+                                <td>{{ donor_entry.get_blood_status }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
 {% endif %}
     {{ block.super }}
 {% endblock %}

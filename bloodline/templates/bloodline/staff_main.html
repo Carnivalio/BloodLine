@@ -1,37 +1,35 @@
-﻿{% extends 'bloodline/base.html' %}
+﻿{% extends 'bloodline/base_template.html' %}
 {% block content %}
-    </div>
-    <div class="container" id="staff_function_list">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div id="header">
-                    <div id="branding">
-                        <h1>Staff Function List</h1>
-                    </div>
-                </div>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Functions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><input onclick="location.href='{% url 'bloodline_app:user_list' %}';" type="button"
-                                   value="User List"/></td>
-                    </tr>
-                    <tr>
-                        <td><input onclick="location.href='{% url 'bloodline_app:bank_list' %}';" type="button"
-                                   value="Bank List"/></td>
-                    </tr>
-                    <tr>
-                        <td><input onclick="location.href='{% url 'bloodline_app:blood_list' %}';" type="button"
-                                   value="Blood List"/></td>
-                    </tr>
-                    </tbody>
-                </table>
+<br><br><br><br>
+<div class="container" id="staff_function_list">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+            <div id="branding">
+                <h1>Staff Function List</h1>
             </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Functions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input onclick="location.href='{% url 'bloodline_app:user_list' %}';" type="button"
+                               value="User List"/></td>
+                </tr>
+                <tr>
+                    <td><input onclick="location.href='{% url 'bloodline_app:bank_list' %}';" type="button"
+                               value="Bank List"/></td>
+                </tr>
+                <tr>
+                    <td><input onclick="location.href='{% url 'bloodline_app:blood_list' %}';" type="button"
+                               value="Blood List"/></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 
 {% endblock %}

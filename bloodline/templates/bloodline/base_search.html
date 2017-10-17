@@ -2,11 +2,16 @@
 
 {% block content %}
     <div class="search-container">
-<button type="button" class="close" aria-label="Close"><span aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></span></button>
-    <div class="input-group input-group-lg col-md-8 search-input">
-            <input type="text" class="form-control" placeholder={% block search-placeholder %}{% endblock %}>
-        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-        </div>
-
+		<button type="button" class="close" aria-label="Close">
+			<span aria-hidden="true">
+				<span class="glyphicon glyphicon-remove"></span>
+			</span>
+		</button>
+	    <div class="input-group input-group-lg col-md-8 search-input">
+	    	<input type="text" class="form-control" placeholder={% block search-placeholder %}{% endblock %}>
+	    	<span class="input-group-addon">
+	    		<span class="glyphicon glyphicon-search"></span>
+	    	</span>
+	    </div>
     </div>
 {% endblock %}
