@@ -97,7 +97,7 @@ urlpatterns = [
     url(r'^staff/', views.staff_main, name='staff_main'),
     url(r'^admin/', admin.site.urls),
 
-    url(r'^api/', include(router.urls)),
+    url(r'^api/$', include(router.urls)),
     url(r'^header/', views.header),
     url(r'^base-search/', views.base_search),
 
