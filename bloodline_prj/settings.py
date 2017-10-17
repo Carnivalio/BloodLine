@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'social_django',
     'bloodline',
     # ADDITIONAL ENDS
+    'datetimewidget',
 ]
 
 MIDDLEWARE = [
@@ -73,22 +74,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'bloodline_prj.urls'
 
-# TEMPLATES = [
-#     {
-#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-#         'DIRS': [],
-#         'APP_DIRS': True,
-#         'OPTIONS': {
-#             'context_processors': [
-#                 'django.template.context_processors.debug',
-#                 'django.template.context_processors.request',
-#                 'django.contrib.auth.context_processors.auth',
-#                 'django.contrib.messages.context_processors.messages',
-#             ],
-#         },
-#     },
-# ]
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -101,15 +86,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
-                # Setting of Template Context Processors for Social Auth
-                # 'social.apps.django_app.context_processors.backends',
-                # 'social.apps.django_app.context_processors.login_redirect',
-
-                # ADDITIONAL STARTS
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
-                # ADDITIONAL ENDS
             ],
         },
     },
@@ -132,27 +110,8 @@ TEMPLATES = [
 
 # Authentication backends Setting
 AUTHENTICATION_BACKENDS = (
-    # For Facebook Authentication
-    # 'social.backends.facebook.FacebookOAuth2',
-
-    # For Twitter Authentication
-    # 'social.backends.twitter.TwitterOAuth',
-
-    # For Google Authentication
-    # 'social.backends.google.GoogleOpenId',
-    # 'social.backends.google.GoogleOAuth2',
-    # 'social.backends.google.GoogleOAuth',
-
-    # For WeChat
-    # 'social.backends.weixin.WeixinOAuth2',
-
-    # Default Django Auth Backends
-    # 'django.contrib.auth.backends.ModelBackend',
-
-    # ADDITIONAL STARTS
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
-    # ADDITIONAL ENDS
 )
 
 # Autentication key pair of Twitter
@@ -207,21 +166,13 @@ REST_FRAMEWORK = {
     ]
 }
 
-# AUTHENTICATION_BACKENDS = (
-#     'social_core.backends.google.GoogleOAuth2',
-#     'django.contrib.auth.backends.ModelBackend',
-# )
-
-# ADDITIONAL STARTS
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "1041450590918-mq5kdrjhe98fpb5bv6f3i8do67r55pm1.apps.googleusercontent.com"
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "DgCWdnK2tyE9zUTUdNN4HBri"
 
 LOGIN_REDIRECT_URL = '/bloodline'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
-# SOCIAL_AUTH_URL_NAMESPACE = 'bloodline_app:social'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
-# ADDITIONAL ENDS
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -247,7 +198,6 @@ LOGIN_URL = 'bloodline_app:login'
 LOGOUT_URL = 'bloodline_app:logout'
 LOGIN_REDIRECT_URL = 'bloodline_app:home'
 
-# AUTH_USER_MODEL = 'bloodline.User'
 AUTH_USER_MODEL = 'bloodline.BloodlineUser'
 
 STATIC_URL = '/static/'
@@ -255,3 +205,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+TWITTER_APP_KEY = 'P71z6oUt3Rf4viFJ0ICB9dncR'
+TWITTER_APP_SECRET = 'FT7tAPWwFYFHgGLClj0JrcWeGaLZJtTGPrcxMQF4z86VuHvgcs'
+TWITTER_OAUTH_TOKEN = '920042363891752960-POj9JCMGsreeGzbkEw46mSGbgOuzUKW'
+TWITTER_OAUTH_TOKEN_SECRET = 'yPZ4wc43KBcXdtz7liAT4ijzhbrWj294r2cmmTtYdQzE0'

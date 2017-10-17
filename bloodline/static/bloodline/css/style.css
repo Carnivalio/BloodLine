@@ -131,27 +131,6 @@ button.navbar-toggle > span.icon-bar {
     filter: Alpha(opacity=80);
 }
 
-#login_form input[type="text"],#login_form input[type="password"]{
-    color:black !important;
-}
-
-.collapse{
-    color: black;
-}
-
-#collapseOne p{
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#appointment_accordion{
-    margin-top: 80px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .red {
     color: red;
 }

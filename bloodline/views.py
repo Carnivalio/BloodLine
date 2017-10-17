@@ -1,28 +1,29 @@
 import json
 
 from django.contrib.admin.views.decorators import user_passes_test
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
-from django.views import generic
-from django.contrib.sites.shortcuts import get_current_site
-from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.utils.encoding import force_bytes, force_text
-from django.core.mail import EmailMessage
-from django.http import HttpResponse
+# from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
+# from django.contrib.sites.shortcuts import get_current_site
+# from django.core.mail import EmailMessage
+from django.http import HttpResponse
+# from django.shortcuts import redirect
 from django.shortcuts import render
-from django.template import RequestContext
+# from django.template import RequestContext
+from django.template.loader import render_to_string
+# from django.utils.encoding import force_text
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+# from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic.edit import View
-from django.contrib.auth.hashers import make_password
+# from django.views.generic.edit import View
 
-from .forms import SignUpForm
-from .models import BloodlineUser, BloodlineBank
+# from .forms import SignUpForm
+# from .models import BloodlineUser, BloodlineBank
 from .tokens import account_activation_token
-from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
+# from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
+from .forms import BloodlineUserForm
 
 
 User = get_user_model()
@@ -34,12 +35,10 @@ def staff_main(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = BloodlineUserForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
-            #            user.refresh_from_db()  # load the profile instance created by the signal
-            # user.profile.birth_date = form.cleaned_data.get('birth_date')
             user.save()
             current_site = get_current_site(request)
             message = render_to_string('bloodline/templates/registration/acc_active_email.html', {
@@ -58,8 +57,8 @@ def signup(request):
             # login(request, user)
             # return redirect('bloodline_app:home')
     else:
-        form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
+        form = BloodlineUserForm()
+    return render(request, 'bloodline/signup.html', {'form': form})
 
 
 @login_required
@@ -78,8 +77,6 @@ def test(request):
 def base_search(request):
     return render(request, 'bloodline/base_search.html')
 
-def appointment(request):
-    return render(request, 'bloodline/appointment_request.html')
 
 def activate(request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
     try:
@@ -108,7 +105,6 @@ def list_centre(request):
         rejson.append(recontent.name)
     return HttpResponse(json.dumps(rejson), content_type='application/json')
 
-# ADDITIONAL STARTS
-def index2(request):
-    return render(request, 'index.html')
-# ADDITIONAL ENDS
+# TODO: this is social authentication sample page, merge with main login
+def social_auth(request):
+    return render(request, 'bloodline/social_auth.html')
