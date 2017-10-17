@@ -6,6 +6,12 @@ $(document).ready(function () {
         $('.search-container').addClass("hide");
         $('.search-input').val("");
         $('.search-result-list .list-group-item').remove();
+        if ($('.search-input').hasClass("find-centre")) {
+            $('.search-input').removeClass("find-centre");
+        } else {
+            $('.search-input').removeClass("search-database");
+            $('.search-input').removeClass("search-database");
+        }
     });
 
     $('.find-centre-btn').click(function () {
@@ -32,7 +38,7 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     len = data.length;
-                    if(len != 0) {
+                    if (len != 0) {
                         for (var i = data.length - 1; i >= 0; i--) {
                             $('.search-result-list').append('<li class="list-group-item">' + data[i] + '</li>');
                         }
@@ -51,7 +57,7 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     len = data.length;
-                    if(len != 0) {
+                    if (len != 0) {
                         for (var i = data.length - 1; i >= 0; i--) {
                             $('.search-result-list').append('<li class="list-group-item">' + data[i] + '</li>');
                         }
