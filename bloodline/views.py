@@ -70,6 +70,7 @@ def header(request):
 def base_search(request):
     return render(request, 'bloodline/base_search.html')
 
+@login_required
 def appointment(request):
     return render(request, 'bloodline/appointment_request.html')
 
@@ -88,26 +89,20 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         return HttpResponse('Activation link is invalid!')
 
 @csrf_exempt
-# TODO: might not safe here
 def list_centre(request):
     key_words = request.POST.get('key_words')
-    # print("KEYWORDS: " + key_words)
     rejson = []
     recontents_postcode = BloodlineBank.objects.filter(postcode__icontains=key_words)
     recontents_address = BloodlineBank.objects.filter(address__icontains=key_words)
-    # print(recontents_postcode)
     for recontent_postcode in recontents_postcode:
         rejson.append(recontent_postcode.name)
-        # print(recontent_postcode.name)
     for recontent_address in recontents_address:
         rejson.append(recontent_address.name)
-        # print(recontent_address.name)
     rejson.sort()
     rejson = list(set(rejson))
     return HttpResponse(json.dumps(rejson), content_type='application/json')
 
 @csrf_exempt
-# TODO: might not safe here
 def list_blood(request):
     key_words = request.POST.get('key_words')
     rejson = []
@@ -122,8 +117,3 @@ def list_blood(request):
     rejson = list(set(rejson))
     return HttpResponse(json.dumps(rejson), content_type='application/json')
 
-# def search_appointment_available(request):
-#     bank_id = request.POST.get('name')
-#     donor_date = request.POST.get('donor_date')
-#     # to_date = request.POST.get('to_date')
-#     appointments = BloodlineBlood.objects.filter(name=name, date=donor_date)

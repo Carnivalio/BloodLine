@@ -2,11 +2,10 @@
 from django.contrib import admin
 from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 
-from .models import BloodlineUser, BloodlineBank, BloodlineBlood
 from . import bank_views, blood_views, user_views, views
+from .models import BloodlineUser
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
@@ -64,14 +63,14 @@ urlpatterns = [
 
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'bloodline_app:login'}, name='logout'),
-    url(r'^login/$', auth_views.login, {'template_name': 'registration/login.html'}, name='login'),
+    url(r'^login/$', auth_views.login, {'template_name': 'bloodline/registration/login.html'}, name='login'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate,
         name='activate'),
     # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^list_centre$', views.list_centre, name='list_centre'),
     url(r'^list_blood$', views.list_blood, name='list_blood'),
-    url(r'^appointment/$', blood_views.CreateBloodPublic.as_view(), name='appointment'),
+    url(r'^appointment/$', blood_views.CreateBloodPublic, name='appointment'),
 
     url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),

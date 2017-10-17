@@ -72,6 +72,17 @@
                             </a>
                         </li>
                         <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+                        {% else %}
+                        <li class="login-btn">
+                            <a href={% url 'bloodline_app:logout' %}>
+                                <button type="button" class="btn btn-danger">Log In</button>
+                            </a>
+                        </li>
+                        <li class="signup-btn">
+                            <a href={% url 'bloodline_app:logout' %}>
+                                <button type="button" class="btn btn-info">Sign Up</button>
+                            </a>
+                        </li>
                     {% endif %}
 
                 </ul>
