@@ -27,7 +27,7 @@ $(document).ready(function () {
         $('.search-result-list').empty();
         $.ajax({
             type: "POST",
-            url: "../bloodline/list_centre/",
+            url: "../list_centre/",
             data: {
                 'key_words': key_words
             },
