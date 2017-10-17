@@ -5,14 +5,14 @@ from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
-# from django.contrib.sites.shortcuts import get_current_site
-# from django.core.mail import EmailMessage
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
 from django.http import HttpResponse
 # from django.shortcuts import redirect
 from django.shortcuts import render
 # from django.template import RequestContext
 from django.template.loader import render_to_string
-# from django.utils.encoding import force_text
+from django.utils.encoding import force_text
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 # from django.views import generic
@@ -41,7 +41,9 @@ def signup(request):
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
-            message = render_to_string('bloodline/templates/registration/acc_active_email.html', {
+            # WARNING: Don't delete this one
+            # message = render_to_string('bloodline/templates/registration/acc_active_email.html', {
+            message = render_to_string('registration/acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
