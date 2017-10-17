@@ -39,9 +39,7 @@ EMAIL_USE_TLS = True
 EMAIL_FROM = "cristal.wu17@gmail.com"
 
 # Application definition
-
 INSTALLED_APPS = [
-    # 'bloodline.apps.BloodlineConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,13 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'social.apps.django_app.default',
     'bootstrap3',
     'captcha',
-    # ADDITIONAL STARTS
     'social_django',
     'bloodline',
-    # ADDITIONAL ENDS
     'datetimewidget',
 ]
 
@@ -67,8 +62,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # Social network authentication
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
@@ -78,7 +71,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        # 'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,39 +85,12 @@ TEMPLATES = [
     },
 ]
 
-# TEMPLATE_LOADERS = (
-#     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.filesystem.Loader',
-# )
-
-# SOCIAL_AUTH_PIPELINE = (
-#     'social.pipeline.social_auth.social_details',
-#     'social.pipeline.social_auth.social_uid',
-#     'social.pipeline.social_auth.auth_allowed',
-#     'social_auth.backends.pipeline.social.social_auth_user',
-#     # 用户名与邮箱关联，文档说可能出现问题
-#     # 'social_auth.backends.pipeline.associate.associate_by_email',
-#     'social_auth.backends.pipeline.misc.save_status_to_session',
-#     'social_auth.backends.pipeline.user.create_user',
-#     'social_auth.backends.pipeline.social.associate_user',
-#     'social_auth.backends.pipeline.social.load_extra_data',
-#     'social_auth.backends.pipeline.user.update_user_details',
-#     'social_auth.backends.pipeline.misc.save_status_to_session',
-# )
 
 # Authentication backends Setting
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
-
-# Autentication key pair of Twitter
-SOCIAL_AUTH_TWITTER_KEY = 'CSrE5qht3BhI2DBjoVICVqcyO'
-SOCIAL_AUTH_TWITTER_SECRET = '	sUw11WVmZZzLcqaKEab7TrJL6BwbPoJsdioEnrUm1ACniIGsTn'
-
-# Authentication key pair of WeChat
-SOCIAL_AUTH_WEIXIN_KEY = 'wx4fb***********599'  # 开放平台应用的APPID
-SOCIAL_AUTH_WEIXIN_SECRET = 'f1c17************08c0489'  # 开放平台应用的SECRET
 
 WSGI_APPLICATION = 'bloodline_prj.wsgi.application'
 
@@ -197,9 +162,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# From Signout project
-# APPEND_SLASH = True
-# APPEND_SLASH=False
 LOGIN_URL = 'bloodline_app:login'
 LOGOUT_URL = 'bloodline_app:logout'
 LOGIN_REDIRECT_URL = 'bloodline_app:home'
