@@ -1,0 +1,85 @@
+﻿{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+<div id="header">
+    <div id="branding">
+    	<h1>User Details • {{ bloodlineuser.username }}</h1>
+    </div>
+</div>
+
+<div id="content" class="flex">
+	<div id="content-main">
+		<table>
+			<thead>
+				<tr>
+					<th>Info</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Username</td>
+					<td><b>{{ bloodlineuser.username }}</b></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><b>{{ bloodlineuser.email }}</b></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><b>{{ bloodlineuser.password }}</b></td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td><b>{{ bloodlineuser.get_gender }}</b></td>
+				</tr>
+				<tr>
+					<td>First Name</td>
+					<td><b>{{ bloodlineuser.first_name }}</b></td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td><b>{{ bloodlineuser.last_name }}</b></td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td><b>{{ bloodlineuser.mobile }}</b></td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td><b>{{ bloodlineuser.address }}</b></td>
+				</tr>
+				<tr>
+					<td>Blood Type</td>
+					<td><b>{{ bloodlineuser.get_blood_type }}</b></td>
+				</tr>
+				<tr>
+					<td>Public Profile</td>
+					<td><b>{{ bloodlineuser.public_profile }}</b></td>
+				</tr>
+				<tr>
+					<td>Verified</td>
+					<td><b>{{ bloodlineuser.verified }}</b></td>
+				</tr>
+				<tr>
+					<td>Staff</td>
+					<td><b>{{ bloodlineuser.is_staff }}</b></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input onclick="location.href='{% url 'bloodline_app:user_update' pk=bloodlineuser.pk %}';" type="button" value="Update User" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input onclick="location.href='{% url 'bloodline_app:user_delete' pk=bloodlineuser.pk %}';" type="button" value="Delete User" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input onclick="location.href='{% url 'bloodline_app:user_list' %}';" type="button" value="Back" /></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

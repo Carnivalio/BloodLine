@@ -1,17 +1,12 @@
-﻿from django.conf.urls import url, include
-from django.contrib.auth import views as auth_views
+﻿from django.conf.urls import include, url
 from django.contrib import admin
-
 from django.contrib.admin.views.decorators import user_passes_test
+from django.contrib.auth import views as auth_views
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
 
-from bloodline.models import BloodlineUser, BloodlineBank, BloodlineBlood
-
-from bloodline import views
-from bloodline import user_views
-from bloodline import bank_views
-from bloodline import blood_views
+from .models import BloodlineUser, BloodlineBank, BloodlineBlood
+from . import bank_views, blood_views, user_views, views
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
@@ -38,12 +33,8 @@ router.register(r'users', UserViewSet)
 
 app_name = 'bloodline'
 urlpatterns = [
-    # url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^rest/', include(router.urls)),
-    # url(r'^', include(router.urls)),
-    url(r'^$', views.home, name='home'),
-    url(r'^header/', views.header),
-    url(r'^base-search/', views.base_search),
+    #TODO: Social authentication sample route
+    url(r'^social_auth/', views.social_auth),
 
     url(r'^staff/users/(?P<pk>\d+)/user_update/$', user_passes_test(lambda u: u.is_staff) (user_views.UpdateUser.as_view()), name='user_update'),
     url(r'^staff/users/(?P<pk>\d+)/user_delete/$', user_passes_test(lambda u: u.is_staff) (user_views.DeleteUser.as_view()), name='user_delete'),
@@ -63,33 +54,26 @@ urlpatterns = [
     url(r'^staff/bloods/blood_create/$', user_passes_test(lambda u: u.is_staff) (blood_views.CreateBlood.as_view()), name='blood_create'),
     url(r'^staff/bloods/$', user_passes_test(lambda u: u.is_staff) (blood_views.BloodListView.as_view()), name='blood_list'),
 
-    url(r'^staff/', views.staff_main, name='staff_main'),
 
-    url(r'^login/$', auth_views.login, {'template_name': 'bloodline/login.html'}, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': 'bloodline_app:login'}, name='logout'),
-    # url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^signup/$', views.signup, name='signup'),
+    url(r'^logout/$', auth_views.logout, {'next_page': 'bloodline_app:login'}, name='logout'),
+    url(r'^login/$', auth_views.login, {'template_name': 'bloodline/login.html'}, name='login'),
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate, name='activate'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        views.activate, name='activate'),
+
     url(r'^list_centre/$',views.list_centre, name='list_centre'),
+
+    url(r'^password_reset/done/$(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_done, name='password_reset_done'),
     url(r'^password_reset/$', auth_views.password_reset, {'post_reset_redirect': '/bloodline/password_reset/done/','email_template_name': 'registration/password_reset_email.html'}, name='password_reset'),
-    url(r'^password_reset/done/$(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        auth_views.password_reset_done, name='password_reset_done'),
-    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        auth_views.password_reset_confirm, {'post_reset_redirect': '/bloodline/reset/done/'},
-        name='password_reset_confirm'),
-    url(r'^reset/done/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})$',
-        auth_views.password_reset_complete, name='password_reset_complete'),
+    url(r'^reset/done/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})$', auth_views.password_reset_complete, name='password_reset_complete'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm, {'post_reset_redirect': '/bloodline/reset/done/'}, name='password_reset_confirm'),
 
-    # Url Entries for social auth
-    # url('', include('social.apps.django_app.urls', namespace='social')),
-
-    # Url Entries for django administration
-    # url('', include('django.contrib.auth.urls', namespace='auth')),
-
-    # url('', views.index2),
-    url(r'^index2/', views.index2),
-
+    url(r'^staff/', views.staff_main, name='staff_main'),
     url(r'^admin/', admin.site.urls),
+
+    url(r'^rest/', include(router.urls)),
+    url(r'^header/', views.header),
+    url(r'^base-search/', views.base_search),
+
+    url(r'^$', views.home, name='home'),
 ]

@@ -1,10 +1,7 @@
 from django.contrib import admin
-# from django.contrib.auth.admin import UserAdmin
-
 from .models import BloodlineUser, BloodlineBank, BloodlineBlood
 
 class BloodlineUserAdmin(admin.ModelAdmin):
-    # list_display = ('username', 'email', 'first_name', 'mobile', 'blood_type', 'verified')
     list_display = ('username', 'mobile', 'blood_type', 'verified')
     list_filter = ['blood_type']
     search_fields = ['username']
@@ -17,7 +14,6 @@ class BloodlineBloodAdmin(admin.ModelAdmin):
     list_display = ('user', 'bank', 'blood_status')
     list_filter = ['blood_status']
     search_fields = ['user']
-
 
 admin.site.register(BloodlineUser, BloodlineUserAdmin)
 admin.site.register(BloodlineBank, BloodlineBankAdmin)

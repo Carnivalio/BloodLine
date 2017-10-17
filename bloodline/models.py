@@ -1,16 +1,14 @@
 import datetime
 
-from django.template.defaulttags import register
-from django.db import models
-from django.forms import ModelForm
-from django.utils import timezone
-from django.core.validators import RegexValidator
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-from django.contrib.auth.models import AbstractUser
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.conf import settings
+from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
+from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.forms import ModelForm
+from django.template.defaulttags import register
+from django.utils import timezone
 from twython import Twython
 
 phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Mobile/Phone number must be entered in the format: '+999999999'. Minimum 9 digits & up to 15 digits allowed.")
@@ -50,15 +48,16 @@ class BloodlineUser(AbstractUser):
     public_profile = models.BooleanField(default=False, help_text="Check if you want your profile to be public")
     verified = models.BooleanField(default=False, help_text="This field is to be checked by staff")
 
+    def __str__(self):
+        return self.username
+
     @register.filter
     def get_gender(self):
         return dict(GENDER_CHOICES).get(self.gender)
-        # return GENDER_CHOICES[self.gender][1]
 
     @register.filter
     def get_blood_type(self):
         return dict(BLOOD_CHOICES).get(self.blood_type)
-        # return BLOOD_CHOICES[self.blood_type][1]
 
 class BloodlineBank(models.Model):
     name = models.CharField(max_length=80, null=False, blank=False, unique=True)
@@ -67,6 +66,7 @@ class BloodlineBank(models.Model):
     email = models.EmailField(max_length=70, blank=False)
     postcode = models.CharField(max_length=4, blank=False)
     user = models.ManyToManyField(BloodlineUser, through='BloodlineBlood')
+
     def __str__(self):
         return self.name
 
@@ -75,12 +75,9 @@ class BloodlineBlood(models.Model):
     bank = models.ForeignKey(BloodlineBank, on_delete=models.CASCADE)
     donor_date = models.DateTimeField('donor date', null=False, blank=False)
     blood_status = models.IntegerField(choices=STATUS_CHOICES, default=0, null=False, blank=False)
-    def __str__(self):
-        return self.donor_date
 
     @register.filter
     def get_blood_status(self):
-        # return BLOOD_CHOICES[self.blood_type][1]
         return dict(STATUS_CHOICES).get(self.blood_status)
 
 @receiver(post_save, sender=BloodlineUser, dispatch_uid="twitter_publish_user_tag")
