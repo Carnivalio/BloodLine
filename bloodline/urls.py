@@ -33,9 +33,6 @@ router.register(r'users', UserViewSet)
 
 app_name = 'bloodline'
 urlpatterns = [
-    # TODO: Social authentication sample route
-    url(r'^social_auth/', views.social_auth),
-
     url(r'^staff/users/(?P<pk>\d+)/user_update/$',
         user_passes_test(lambda u: u.is_staff)(user_views.UpdateUser.as_view()), name='user_update'),
     url(r'^staff/users/(?P<pk>\d+)/user_delete/$',

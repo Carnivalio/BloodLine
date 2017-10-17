@@ -27,7 +27,7 @@
                     {% endfor %}
                     <br>
                     <input type="submit" class="btn btn-danger" value="Log In"/>
-                    <input type="button" class="btn btn-info" value="Log In with Google">
+                    <input type="button" class="btn btn-info" onclick="location.href='{% url 'social:begin' 'google-oauth2' %}'" value="Log In with Google">
                     <a class="forgot-passward-prompt" href="{% url 'bloodline_app:password_reset' %}">Forgot password?</a>
                     <br>
                     <br>
