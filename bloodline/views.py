@@ -42,8 +42,8 @@ def signup(request):
             user.save()
             current_site = get_current_site(request)
             # WARNING: Don't delete this one
-            # message = render_to_string('bloodline/templates/registration/acc_active_email.html', {
-            message = render_to_string('registration/acc_active_email.html', {
+            # message = render_to_string('bloodline/templates/bloodline/registration/acc_active_email.html', {
+            message = render_to_string('bloodline/registration/acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
@@ -60,7 +60,7 @@ def signup(request):
             # return redirect('bloodline_app:home')
     else:
         form = BloodlineUserForm()
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'bloodline/registration/signup.html', {'form': form})
 
 
 @login_required

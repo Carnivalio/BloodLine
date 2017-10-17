@@ -33,9 +33,6 @@ router.register(r'users', UserViewSet)
 
 app_name = 'bloodline'
 urlpatterns = [
-    # TODO: Social authentication sample route
-    url(r'^social_auth/', views.social_auth),
-
     url(r'^staff/users/(?P<pk>\d+)/user_update/$',
         user_passes_test(lambda u: u.is_staff)(user_views.UpdateUser.as_view()), name='user_update'),
     url(r'^staff/users/(?P<pk>\d+)/user_delete/$',
@@ -69,7 +66,7 @@ urlpatterns = [
 
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^logout/$', auth_views.logout, {'next_page': 'bloodline_app:login'}, name='logout'),
-    url(r'^login/$', auth_views.login, {'template_name': 'registration/login.html'}, name='login'),
+    url(r'^login/$', auth_views.login, {'template_name': 'bloodline/registration/login.html'}, name='login'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate,
         name='activate'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

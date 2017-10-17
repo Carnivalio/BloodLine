@@ -42,16 +42,29 @@ html, body {
     background-size: cover;
 }
 
-#login_form input[type="text"],#login_form input[type="password"]{
-    color:black !important;
+#login_form input[type="text"], #login_form input[type="password"] {
+    color: black !important;
 }
 
-#signup_form input[type="text"],#signup_form input[type="password"], #signup_form input[type="email"]{
-    color:black !important;
+.login-box{
+    margin-top: -150px;
 }
 
-#signup_form select{
+#signup_form input[type="text"], #signup_form input[type="password"], #signup_form input[type="email"] {
+    color: black !important;
+}
+
+#signup_form select {
     color: black;
+}
+
+#signup_form input {
+    margin-top: 10px;
+    opacity: 0.8;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .my-navbar {
@@ -74,12 +87,16 @@ html, body {
     transition: color 0.5s ease-in-out;
 }
 
-#appointment_accordion{
+#appointment_accordion {
     margin-top: 80px;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    color:black;
+    color: black;
+}
+
+#appointment_accordion list {
+    color: black;
 }
 
 /*-webkit-transition ;-moz-transition*/
@@ -107,19 +124,19 @@ button.navbar-toggle > span.icon-bar {
     background: url("../img/Nathan-homepage.png")
 }
 
-.signup-prompt{
-    color:white;
+.signup-prompt {
+    color: white;
 }
 
-.login-box{
+.login-box {
     margin-top: 100px;
 }
 
-.login-box a:hover{
-    color:mintcream;
+.login-box a:hover {
+    color: mintcream;
 }
 
-.forgot-passward-prompt{
+.forgot-passward-prompt {
     color: white;
 }
 
@@ -164,7 +181,7 @@ button.navbar-toggle > span.icon-bar {
     opacity: 1 !important;
     height: 250px;
     overflow: scroll;
-    overflow-x:hidden;
+    overflow-x: hidden;
     margin-top: 10px;
 }
 
