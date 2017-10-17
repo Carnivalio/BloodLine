@@ -46,31 +46,47 @@ BloodLine is a web-app that connects people who want to donate their blood, peop
 Bloodline can be regarded as a bridge among donor, people need blood and healthcare organizations. For the donors, they can request an appointment to donate their blood easily. For people need blood, especially people who have a rare kind of blood(e.g. O-Negative), they can connect with people having the same type of blood. For healthcare organizations, they have a large database to search the available blood donors and blood sources, which can save time at emergencies. 
 
 ## Front-End Functionality
-For 
-## Administrator
+-----------------------------------------------------------
+## Home
 
-- Able to add, edit, and delete User, Bank, and Blood Data
+- Functionality: On home page, users could learn more about blood donation
+
+## Donate
+
+- Functionality: Through donate function, users could request an appointment with the blood centres, the system will automatically record the information of the requesting donor by his login information
+- Usage: Choose the donation centre, donation type and appointment, then the system will record this request
 
 ## Find a Centre
 
-- Able to search a blood centre through postcode or name
+- Funtinality: Able to search a blood centre through postcode or name, this is an ajax function, which means the page does not need to be reload
+- Usage: Type in the postcode or name into the input space and the information of corresponding centres will be shown
 
-## Rare Blood Donor Database
+## Blood Donor Database
 
-- Able to search donors through bloodtype
+- Functionality: Able to search donors through bloodtype, this is an ajax function, which means the page does not need to be reload
+- Usage: Type in the blood type into the input space and the users with that blood type will be shown
 
-### User Index Page (Administrator Only)
+## Log In
 
-- Show the list of the user
-- User list is click-able, redirecting user to the User Detail page
-- Feature to add new user
+- Functionality: Now we support two kinds of login, one is normal login, another one is login by Google
 
-### User Detail Page (Administrator Only)
+## Sign Up
 
-- Show all details of the selected user
+- Functionality: Sign up a new user with his personal information and blood information. If the user tick "Public profile", then his information will be added to the donor database and could be searched later
 
-### Create User Page (Administrator Only)
-- Self explanatory, this page is to be used for adding user
+## Web Service Functionality
+------------------------------------------------
+## Twitter Posts
 
-## Back-End Functionality
+- Functionality: We believe that Twitter has a large social influence. Thus, everytime a user donates the blood, the news about it will be posted on our public page on Twitter
+
+## Administration Zone
+------------------------------------------------
+- Functionality: Control all the database (user, bank, and blood/donation)
+
+## RESTFUL API
+------------------------------------------------
+
+
+
 
