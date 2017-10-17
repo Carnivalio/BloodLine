@@ -8,100 +8,125 @@
 <body>
 {% block content %}
     <form id="" method="post">
-    <div class="panel-group" id="appointment_accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseOne">
-                        <b>Step 1: Choose Donation Type</b>
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1"
-                                   value="option1" checked> <b>Whole Blood</b>
-                        </label>
-                    </div>
-                    <p><i>By giving whole blood, you'll be helping people with cancer, burns, heart disease, pregnant women, and those undergoing surgery.</i></p>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2"
-                                   value="option2"><b>Plasma</b>
-                        </label>
-                        <p><i>This takes a little longer than whole blood donation but your time may give a lifetime to a patient with bone marrow disease, kidney disease or antibody deficiencies.</i></p>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3"
-                                   value="option2"><b>Platelet</b>
-                        </label>
-                        <p><i>These have a limited shelf life of 5 days and so are in constant need by patients with cancer or leukaemia, or who are undergoing chemotherapy.</i></p>
+        <div class="panel-group" id="appointment_accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne">
+                            <b>Step 1: Choose Donation Type</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1"
+                                       value="option1" checked> <b>Whole Blood</b>
+                            </label>
+                        </div>
+                        <p><i>By giving whole blood, you'll be helping people with cancer, burns, heart disease,
+                            pregnant women, and those undergoing surgery.</i></p>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2"
+                                       value="option2"><b>Plasma</b>
+                            </label>
+                            <p><i>This takes a little longer than whole blood donation but your time may give a lifetime
+                                to a patient with bone marrow disease, kidney disease or antibody deficiencies.</i></p>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3"
+                                       value="option2"><b>Platelet</b>
+                            </label>
+                            <p><i>These have a limited shelf life of 5 days and so are in constant need by patients with
+                                cancer or leukaemia, or who are undergoing chemotherapy.</i></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseTwo">
-                        <b>Step 2: Appointment Selection</b>
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
-                <p>Enter a postcode or suburb to find your nearest donor centre</p>
-                <p>Then select your preferred appointment on the timetable below</p>
-                    <div id="appointment_input_frame">
-                        <span>Postcode or Suburb</span>
-                        <input type="text">
-                        <span>From Date</span>
-                        <input type="date" value="" id="from_date_picker"/>
-                        <span>From Date</span>
-                        <input type="date" value="" id="to_date_picker"/>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo">
+                            <b>Step 2: Appointment Selection</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <p>Enter a postcode or suburb to find your nearest donor centre</p>
+                        <p>Then select your preferred appointment on the timetable below</p>
+                        <div id="appointment_input_frame">
+                            <span>Postcode or Suburb</span>
+                            <input type="text">
+                            <span>Date</span>
+                            <input type="date" value="" id="date_picker"/>
+                            <span>Time</span>
+                            <ul class="dropdown-menu time_picker" role="menu">
+                                <li>
+                                    <a href="#">8:00</a>
+                                </li>
+                                <li>
+                                    <a href="#">9:00</a>
+                                </li>
+                                <li>
+                                    <a href="#">10:00</a>
+                                </li>
+                                <li>
+                                    <a href="#">11:00</a>
+                                </li>
+                                <li>
+                                    <a href="#">12:00</a>
+                                </li>
+                                <li>
+                                    <a href="#">13:00</a>
+                                </li>
+                                <li>
+                                    <a href="#">14:00</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <input type="button" class="btn btn-info" value="Search">
                     </div>
-                    <input type="button" class="btn btn-info" value="Search">
                 </div>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseThree">
-                        <b>Step 3: Confirm your Details</b>
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree">
+                            <b>Step 3: Confirm your Details</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
 
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree">
+                            <b>Step 4: Booking Reserved</b>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+                        cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                        vice lomo.
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion"
-                       href="#collapseThree">
-                        <b>Step 4: Booking Reserved</b>
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse">
-                <div class="panel-body">
-                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                    vice lomo.
-                </div>
-            </div>
-        </div>
-    </div>
     </form>
 {% endblock %}
 </body>
