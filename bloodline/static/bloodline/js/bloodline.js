@@ -2,13 +2,17 @@ $(document).ready(function () {
     $('#myCarousel').carousel({interval: 100000});
 
 
-    $('.search-box-close').click(function () {
+    $('.search-box-close .popup-close').click(function () {
+        alert("test");
         $('.search-container').addClass("hide");
-        if ($('.search-input').hasClass("find-centre")) {
+        $('.search-input').val("");
+        $('.search-result-list .list-group-item').remove();
+
+        /*if ($('.search-input').hasClass("find-centre")) {
             $('.search-input').removeClass("find-centre");
         } else if ($('.search-input').hasClass("search-database")) {
             $('.search-input').removeClass("search-database");
-        }
+        }*/
     });
 
     $('.find-centre-btn').click(function () {

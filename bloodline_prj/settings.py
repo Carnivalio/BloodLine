@@ -199,7 +199,7 @@ STATIC_URL = '/static/'
 
 # From Signout project
 # APPEND_SLASH = True
-APPEND_SLASH=False
+# APPEND_SLASH=False
 LOGIN_URL = 'bloodline_app:login'
 LOGOUT_URL = 'bloodline_app:logout'
 LOGIN_REDIRECT_URL = 'bloodline_app:home'
