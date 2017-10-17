@@ -93,6 +93,11 @@ TEMPLATES = [
     },
 ]
 
+# TEMPLATE_LOADERS = (
+#     'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.filesystem.Loader',
+# )
+
 # SOCIAL_AUTH_PIPELINE = (
 #     'social.pipeline.social_auth.social_details',
 #     'social.pipeline.social_auth.social_uid',
