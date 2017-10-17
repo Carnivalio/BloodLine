@@ -20,13 +20,14 @@ from django.views.decorators.csrf import csrf_exempt
 # from django.views.generic.edit import View
 
 # from .forms import SignUpForm
-from .models import BloodlineUser, BloodlineBank, BloodlineAppointment
+from .models import BloodlineUser, BloodlineBank, BLOOD_CHOICES#, BloodlineAppointment
 from .tokens import account_activation_token
 # from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
 from .forms import BloodlineUserForm
 
 
 User = get_user_model()
+blood_type_dict = dict(BLOOD_CHOICES)
 
 
 @user_passes_test(lambda u: u.is_staff)
@@ -41,8 +42,6 @@ def signup(request):
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
-            # WARNING: Don't delete this one
-            # message = render_to_string('bloodline/templates/bloodline/registration/acc_active_email.html', {
             message = render_to_string('bloodline/registration/acc_active_email.html', {
                 'user': user,
                 'domain': current_site.domain,
@@ -56,8 +55,6 @@ def signup(request):
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
             return HttpResponse('Please confirm your email address to complete the registration')
-            # login(request, user)
-            # return redirect('bloodline_app:home')
     else:
         form = BloodlineUserForm()
     return render(request, 'bloodline/registration/signup.html', {'form': form})
@@ -67,14 +64,8 @@ def signup(request):
 def home(request):
     return render(request, 'bloodline/home.html')
 
-
 def header(request):
     return render(request, 'bloodline/header.html')
-
-
-def test(request):
-    return render(request, 'bloodline/test.html')
-
 
 def base_search(request):
     return render(request, 'bloodline/base_search.html')
@@ -92,7 +83,6 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         user.is_active = True
         user.save()
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        # return redirect('home')
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
@@ -101,23 +91,39 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
 # TODO: might not safe here
 def list_centre(request):
     key_words = request.POST.get('key_words')
-    print(key_words)
-    recontents = BloodlineBank.objects.filter(postcode=key_words)
-    print(recontents)
+    # print("KEYWORDS: " + key_words)
     rejson = []
-    for recontent in recontents:
-        rejson.append(recontent.name)
+    recontents_postcode = BloodlineBank.objects.filter(postcode__icontains=key_words)
+    recontents_address = BloodlineBank.objects.filter(address__icontains=key_words)
+    # print(recontents_postcode)
+    for recontent_postcode in recontents_postcode:
+        rejson.append(recontent_postcode.name)
+        # print(recontent_postcode.name)
+    for recontent_address in recontents_address:
+        rejson.append(recontent_address.name)
+        # print(recontent_address.name)
+    rejson.sort()
+    rejson = list(set(rejson))
     return HttpResponse(json.dumps(rejson), content_type='application/json')
 
-def search_appointment_available(request):
-    bank_id = request.POST.get('bank_id')
-    from_date = request.POST.get('from_date')
-    to_date = request.POST.get('to_date')
-    appointments = BloodlineAppointment.objects.filter(bank_id = bank_id, date_range=(from_date, to_date))
+@csrf_exempt
+# TODO: might not safe here
+def list_blood(request):
+    key_words = request.POST.get('key_words')
+    rejson = []
+    current_type = 0
+    for each_type in blood_type_dict:
+        if key_words.lower() in blood_type_dict[each_type].lower():
+            current_type = each_type
+    recontents = BloodlineUser.objects.filter(blood_type=current_type)
+    for recontent in recontents:
+        rejson.append(recontent.username)
+    rejson.sort()
+    rejson = list(set(rejson))
+    return HttpResponse(json.dumps(rejson), content_type='application/json')
 
-
-
-
-# TODO: this is social authentication sample page, merge with main login
-def social_auth(request):
-    return render(request, 'bloodline/social_auth.html')
+# def search_appointment_available(request):
+#     bank_id = request.POST.get('name')
+#     donor_date = request.POST.get('donor_date')
+#     # to_date = request.POST.get('to_date')
+#     appointments = BloodlineBlood.objects.filter(name=name, date=donor_date)

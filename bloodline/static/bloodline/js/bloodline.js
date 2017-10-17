@@ -24,27 +24,44 @@ $(document).ready(function () {
     });
 
     $('.search-input').keyup(function () {
-        var key_words = $('.find-centre').val();
-        $('.search-result-list').empty();
-        $.ajax({
-            type: "POST",
-            url: "/bloodline/list_centre",
-            data: {
-                'key_words': key_words
-            },
-            success: function (data) {
-                len = data.length;
-                if(len != 0) {
-                    for (var i = data.length - 1; i >= 0; i--) {
-                        $('.search-result-list').append('<li class="list-group-item">' + data[i] + '</li>');
+        if ($('.search-input').hasClass("find-centre")) {
+            var key_words = $('.find-centre').val();
+            $('.search-result-list').empty();
+            $.ajax({
+                type: "POST",
+                url: "/bloodline/list_centre",
+                data: {
+                    'key_words': key_words
+                },
+                success: function (data) {
+                    len = data.length;
+                    if(len != 0) {
+                        for (var i = data.length - 1; i >= 0; i--) {
+                            $('.search-result-list').append('<li class="list-group-item">' + data[i] + '</li>');
+                        }
                     }
                 }
-            }
-        });
-        return false;
+            });
+            return false;
+        } else if ($('.search-input').hasClass("search-database")) {
+            var key_words = $('.search-database').val();
+            $('.search-result-list').empty();
+            $.ajax({
+                type: "POST",
+                url: "/bloodline/list_blood",
+                data: {
+                    'key_words': key_words
+                },
+                success: function (data) {
+                    len = data.length;
+                    if(len != 0) {
+                        for (var i = data.length - 1; i >= 0; i--) {
+                            $('.search-result-list').append('<li class="list-group-item">' + data[i] + '</li>');
+                        }
+                    }
+                }
+            });
+            return false;
+        }
     });
-
-
-
-
 });

@@ -71,13 +71,12 @@ urlpatterns = [
         name='activate'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
-    url(r'^list_centre/$', views.list_centre, name='list_centre'),
-    url(r'^appointment/$', views.appointment, name='appointment'),
+    url(r'^list_centre$', views.list_centre, name='list_centre'),
+    url(r'^list_blood$', views.list_blood, name='list_blood'),
+    url(r'^appointment/$', blood_views.CreateBloodPublic.as_view(), name='appointment'),
 
     url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
-    # url(r'^password_reset/done/$(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_done, name='password_reset_done'),
     url(r'^reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
-    # url(r'^reset/done/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})$', auth_views.password_reset_complete, name='password_reset_complete'),
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm, {'post_reset_redirect': '/bloodline/reset/done/'}, name='password_reset_confirm'),
     url(r'^password_reset/$', auth_views.password_reset, {'post_reset_redirect': '/bloodline/password_reset/done/', 'email_template_name': 'bloodline/registration/password_reset_email.html'}, name='password_reset'),
 
