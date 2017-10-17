@@ -1,33 +1,42 @@
-﻿<!-- <form action="" method="post">{% csrf_token %}
+﻿{% extends 'bloodline/base.html' %}
+
+{% block content %}
+    <!-- <form action="" method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Save" />
 </form> -->
+    <!-- <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form> -->
+    <!-- <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+ -->
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
-
-<div id="header">
-    <div id="branding">
-    	<h1>Create New User Page</h1>
+    {{ form.media }}
+    <div class="container" id="user_create_box">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div id="header">
+                    <div id="branding">
+                        <h1>Create User</h1>
+                    </div>
+                </div>
+                <form method="POST" class="post-form">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_table }}
+                        <tr>
+                            <td></td>
+                            <td><input onclick="location.href='{% url 'bloodline_app:user_list' %}';" type="button"
+                                       value="Back"/> <input type="submit" value="Save"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 
-<div id="content" class="flex">
-	<div id="content-main">
-{% block content %}
-    <h1>Create User</h1>
-    <form method="POST" class="post-form">
-    {% csrf_token %}
-        <table>
-        {{ form.as_table }}
-        <tr>
-            <td></td>
-            <td><input onclick="location.href='{% url 'bloodline_app:user_list' %}';" type="button" value="Back" /> <input type="submit" value="Save" /></td>
-        </tr>
-        </table>
-    </form>
 {% endblock %}
-	</div>
-</div>
