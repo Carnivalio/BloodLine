@@ -1,24 +1,14 @@
 ﻿{% extends 'bloodline/base_template.html' %}
 
 {% block content %}
-    <!-- <form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" />
-</form> -->
-    <!-- <form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update" />
-</form>
- -->
 
     {{ form.media }}
+    <br><br><br><br>
     <div class="container" id="bank_update_box">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div id="header">
-                    <div id="branding">
-                        <h1>Update Bank</h1>
-                    </div>
+            <div class="col-md-4 col-md-offset-1">
+                <div id="branding">
+                    <h1>Update Bank</h1>
                 </div>
                 <form method="POST" class="post-form">{% csrf_token %}
                     <table>

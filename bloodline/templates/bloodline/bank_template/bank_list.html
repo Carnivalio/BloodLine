@@ -2,69 +2,56 @@
 
 {% block content %}
 
-    <!-- <form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" />
-</form> -->
-    <!-- <form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update" />
-</form>
- -->
-
     {{ form.media }}
+    <br><br><br><br>
     <div class="container" id="bank_list_box">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div id="header">
-                    <div id="branding">
-                        <h1>Bank List</h1>
-                    </div>
+            <div class="col-md-4 col-md-offset-0">
+                <div id="branding">
+                    <h1>Bank List</h1>
                 </div>
-                <div id="content" class="flex">
-                    <div id="content-main">
-                        {% if bank_list %}
-                            <table>
-                                <thead>
+                <div id="content-main">
+                    {% if bank_list %}
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for bank in bank_list %}
                                 <tr>
-                                    <th>No.</th>
-                                    <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
+                                    <td>{{ bank.id }}</td>
+                                    <td><a href="{% url 'bloodline_app:bank_detail' bank.id %}">{{ bank.name }}</a>
+                                    </td>
+                                    <td><a href="{% url 'bloodline_app:bank_detail' bank.id %}">{{ bank.phone }}</a>
+                                    </td>
+                                    <td><a href="{% url 'bloodline_app:bank_detail' bank.id %}">{{ bank.email }}</a>
+                                    </td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                {% for bank in bank_list %}
-                                    <tr>
-                                        <td>{{ bank.id }}</td>
-                                        <td><a href="{% url 'bloodline_app:bank_detail' bank.id %}">{{ bank.name }}</a>
-                                        </td>
-                                        <td><a href="{% url 'bloodline_app:bank_detail' bank.id %}">{{ bank.phone }}</a>
-                                        </td>
-                                        <td><a href="{% url 'bloodline_app:bank_detail' bank.id %}">{{ bank.email }}</a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                <tr>
-                                    <td></td>
-                                    <td><input onclick="location.href='{% url 'bloodline_app:bank_create' %}';"
-                                               type="button" value="Create Bank"/></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><input onclick="location.href='{% url 'bloodline_app:staff_main' %}';"
-                                               type="button" value="Back"/></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        {% else %}
-                            <p>No bank registered.</p>
-                            <input onclick="location.href='{% url 'bloodline_app:bank_create' %}';" type="button"
-                                   value="Create Bank"/>
-                            <input onclick="location.href='{% url 'bloodline_app:staff_main' %}';" type="button"
-                                   value="Back"/>
-                        {% endif %}
-                    </div>
+                            {% endfor %}
+                            <tr>
+                                <td></td>
+                                <td><input onclick="location.href='{% url 'bloodline_app:bank_create' %}';"
+                                           type="button" value="Create Bank"/></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input onclick="location.href='{% url 'bloodline_app:staff_main' %}';"
+                                           type="button" value="Back"/></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p>No bank registered.</p>
+                        <input onclick="location.href='{% url 'bloodline_app:bank_create' %}';" type="button"
+                               value="Create Bank"/>
+                        <input onclick="location.href='{% url 'bloodline_app:staff_main' %}';" type="button"
+                               value="Back"/>
+                    {% endif %}
                 </div>
             </div>
         </div>
