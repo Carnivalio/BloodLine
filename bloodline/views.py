@@ -20,7 +20,7 @@ from django.views.decorators.csrf import csrf_exempt
 # from django.views.generic.edit import View
 
 # from .forms import SignUpForm
-# from .models import BloodlineUser, BloodlineBank
+from .models import BloodlineUser, BloodlineBank
 from .tokens import account_activation_token
 # from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
 from .forms import BloodlineUserForm
