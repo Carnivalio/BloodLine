@@ -85,3 +85,8 @@ Bloodline can be regarded as a bridge among donor, people need blood and healthc
 ## RESTFUL API
 
 - BloodLine also support RESTful API for easier data retrieval, this function supports all the data tables (users, blood bank, and the blood donation)
+
+# Author
+
+- Rifai Riza Kelvin (12197671)
+- Yuexin Wu (12663441)
