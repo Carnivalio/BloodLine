@@ -43,10 +43,10 @@ BloodLine is a web-app that connects people who want to donate their blood, peop
 
 ### Why BloodLine?
 
-Bloodline can be regarded as a bridge among donor, people need blood and healthcare organizations. For the donors, they can request an appointment to donate their blood easily. For people need blood, especially people who have a rare kind of blood(e.g. O-Negative), they can connect with people having the same type of blood. For healthcare organizations, they have a large database to search the available blood donors and blood sources, which can save time at emergencies. 
+Bloodline can be regarded as a bridge among donor, people need blood and healthcare organizations. For the donors, they can request an appointment to donate their blood easily. For people need blood, especially people who have a rare kind of blood(e.g. O-Negative), they can connect with people having the same type of blood. For healthcare organizations, they have a large database to search the available blood donors and blood sources, which can save time at emergencies.
 
-## Front-End Functionality
------------------------------------------------------------
+# Front-End Functionality
+
 ## Home
 
 - Functionality: On home page, users could learn more about blood donation
@@ -74,19 +74,14 @@ Bloodline can be regarded as a bridge among donor, people need blood and healthc
 
 - Functionality: Sign up a new user with his personal information and blood information. If the user tick "Public profile", then his information will be added to the donor database and could be searched later
 
-## Web Service Functionality
-------------------------------------------------
-## Twitter Posts
+## Web Service Functionality (Twitter Posts)
 
 - Functionality: We believe that Twitter has a large social influence. Thus, everytime a user donates the blood, the news about it will be posted on our public page on Twitter
 
 ## Administration Zone
-------------------------------------------------
+
 - Functionality: Control all the database (user, bank, and blood/donation)
 
 ## RESTFUL API
-------------------------------------------------
 
-
-
-
+- BloodLine also support RESTful API for easier data retrieval, this function supports all the data tables (users, blood bank, and the blood donation)
