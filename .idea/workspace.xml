@@ -141,15 +141,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/bloodline/templates/bloodline/signup.html" />
-        <option value="$PROJECT_DIR$/bloodline/templates/registration/signup.html" />
-        <option value="$PROJECT_DIR$/bloodline/templates/registration/password_reset_subject.txt" />
-        <option value="$PROJECT_DIR$/bloodline/templates/registration/acc_active_email.html" />
-        <option value="$PROJECT_DIR$/bloodline/templates/registration/password_reset_complete.html" />
+        <option value="$PROJECT_DIR$/bloodline/templates/bloodline/registration/signup.html" />
+        <option value="$PROJECT_DIR$/bloodline/templates/bloodline/registration/password_reset_subject.txt" />
+        <option value="$PROJECT_DIR$/bloodline/templates/bloodline/registration/acc_active_email.html" />
+        <option value="$PROJECT_DIR$/bloodline/templates/bloodline/registration/password_reset_complete.html" />
         <option value="$PROJECT_DIR$/bloodline/utils/email_send.py" />
         <option value="$PROJECT_DIR$/bloodline/urls.py" />
         <option value="$PROJECT_DIR$/bloodline/forms.py" />
         <option value="$PROJECT_DIR$/bloodline/static/bloodline/css/style.css" />
-        <option value="$PROJECT_DIR$/bloodline/templates/registration/password_reset_email.html" />
+        <option value="$PROJECT_DIR$/bloodline/templates/bloodline/registration/password_reset_email.html" />
         <option value="$PROJECT_DIR$/bloodline/templates/bloodline/appointment_request.html" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/bloodline/templates/bloodline/base.html" />
@@ -486,14 +486,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bloodline/templates/registration/login.html">
+    <entry file="file://$PROJECT_DIR$/bloodline/templates/bloodline/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-408">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bloodline/templates/registration/signup.html">
+    <entry file="file://$PROJECT_DIR$/bloodline/templates/bloodline/registration/signup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="25" column="69" lean-forward="false" selection-start-line="25" selection-start-column="69" selection-end-line="25" selection-end-column="69" />
@@ -535,42 +535,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bloodline/templates/registration/password_reset_form.html">
+    <entry file="file://$PROJECT_DIR$/bloodline/templates/bloodline/registration/password_reset_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bloodline/templates/registration/password_reset_subject.txt">
+    <entry file="file://$PROJECT_DIR$/bloodline/templates/bloodline/registration/password_reset_subject.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bloodline/templates/registration/password_reset_confirm.html">
+    <entry file="file://$PROJECT_DIR$/bloodline/templates/bloodline/registration/password_reset_confirm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bloodline/templates/registration/password_reset_done.html">
+    <entry file="file://$PROJECT_DIR$/bloodline/templates/bloodline/registration/password_reset_done.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bloodline/templates/registration/acc_active_email.html">
+    <entry file="file://$PROJECT_DIR$/bloodline/templates/bloodline/registration/acc_active_email.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="40" lean-forward="false" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bloodline/templates/registration/password_reset_complete.html">
+    <entry file="file://$PROJECT_DIR$/bloodline/templates/bloodline/registration/password_reset_complete.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="83" lean-forward="false" selection-start-line="4" selection-start-column="83" selection-end-line="4" selection-end-column="83" />
@@ -584,7 +584,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bloodline/templates/registration/password_reset_email.html">
+    <entry file="file://$PROJECT_DIR$/bloodline/templates/bloodline/registration/password_reset_email.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="69" lean-forward="false" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
