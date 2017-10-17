@@ -43,7 +43,7 @@ BloodLine is a web-app that connects people who want to donate their blood, peop
 
 ### Why BloodLine?
 
-BloodLine focused on helping those who in need, for example, there are some people out there who have a rare kind of blood (e.g. O-Negative) and they need to get the blood from the specific donor (O-Negative can only receive from O-Negative)
+Bloodline can be regarded as a bridge among donor, people need blood and healthcare organizations. For the donors, they can request an appointment to donate their blood easily. For people need blood, especially people who have a rare kind of blood(e.g. O-Negative), they can connect with people having the same type of blood. For healthcare organizations, they have a large database to search the available blood donors and blood sources, which can save time at emergencies. 
 
 **TEMPORARY**
 ## Front-End Functionality
@@ -52,7 +52,13 @@ BloodLine focused on helping those who in need, for example, there are some peop
 
 - Able to add, edit, and delete User, Bank, and Blood Data
 
-## User Pages (Administrator Only)
+## Find a Centre
+
+- Able to search a blood centre through postcode or name
+
+## Rare Blood Donor Database
+
+- Able to search donors through bloodtype
 
 ### User Index Page (Administrator Only)
 
