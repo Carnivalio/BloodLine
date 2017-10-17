@@ -17,9 +17,7 @@ LOGIN_REDIRECT_URL = 'home'
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = BloodlineUser
-        # fields = ('url', 'username', 'email', 'is_staff')
-        fields = ('username', 'email', 'is_staff')
-
+        fields = ('id', 'username', 'first_name', 'last_name', 'gender', 'blood_type')
 
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
@@ -33,9 +31,6 @@ router.register(r'users', UserViewSet)
 
 app_name = 'bloodline'
 urlpatterns = [
-    # TODO: Social authentication sample route
-    url(r'^social_auth/', views.social_auth),
-
     url(r'^staff/users/(?P<pk>\d+)/user_update/$',
         user_passes_test(lambda u: u.is_staff)(user_views.UpdateUser.as_view()), name='user_update'),
     url(r'^staff/users/(?P<pk>\d+)/user_delete/$',
@@ -72,7 +67,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'registration/login.html'}, name='login'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate,
         name='activate'),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^list_centre$', views.list_centre, name='list_centre'),
     url(r'^list_blood$', views.list_blood, name='list_blood'),
@@ -86,7 +81,7 @@ urlpatterns = [
     url(r'^staff/', views.staff_main, name='staff_main'),
     url(r'^admin/', admin.site.urls),
 
-    url(r'^rest/', include(router.urls)),
+    url(r'^api/', include(router.urls)),
     url(r'^header/', views.header),
     url(r'^base-search/', views.base_search),
 
