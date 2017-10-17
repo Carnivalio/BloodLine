@@ -112,7 +112,7 @@ urlpatterns = [
     url(r'^list_blood$', views.list_blood, name='list_blood'),
 
     # This url point to the client side appointment booking
-    url(r'^appointment/$', blood_views.CreateBloodPublic, name='appointment'),
+    url(r'^appointment/$', user_passes_test(lambda u: u.is_staff) (blood_views.CreateBloodPublic.as_view()), name='appointment'),
 
     # Urls below related to password reset function
     url(r'^password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
