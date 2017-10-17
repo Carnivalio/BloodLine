@@ -28,7 +28,6 @@ class CreateBlood(CreateView):
     form_class = BloodlineBloodForm
     template_name_suffix = '_create_form'
 
-@login_required
 class CreateBloodPublic(CreateView):
     template_name = 'bloodline/appointment_request.html'
     success_url = reverse_lazy('bloodline_app:home')

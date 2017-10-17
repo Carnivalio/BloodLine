@@ -1,29 +1,11 @@
-﻿/*li a {
-    color: green;
+﻿/* For all Pages */
+* {
+    margin: 0;
+    padding: 0;
 }
 
-body {
-    background: white url("images/background.gif") no-repeat right bottom;
-}*/
-
-.navbar-inner {
-    border-top: red 3px solid;
-}
-
-.main.logo.img {
-    width: 80px;
-    height: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.main.content-container {
-    background-image: url("../img/home-background.jpg");
-}
-
-.content-container {
-    width: 100%;
-    height: 300px;
+#myCarousel {
+    background: url("../img/Nathan-homepage.png")
 }
 
 html, body {
@@ -42,11 +24,116 @@ html, body {
     background-size: cover;
 }
 
+.layer {
+    background: #000;
+    opacity: 0.42;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.red {
+    color: red;
+}
+
+
+/* Navigator Bar */
+.navbar-inner {
+    border-top: red 3px solid;
+}
+
+.my-navbar {
+    padding: 20px 0;
+    transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+
+.my-navbar a {
+    background: transparent !important;
+    color: darkslategray !important
+}
+
+.my-navbar a {
+    transition: color 0.5s ease-in-out;
+}
+
+.top-nav {
+    padding: 0;
+    border-top: red 3px solid;
+    background: white;
+    height: 130px;
+}
+
+.my-navbar a:hover {
+    color: red !important;
+    background: transparent;
+    outline: 0
+}
+
+button.navbar-toggle {
+    background-color: #fbfbfb;
+}
+
+button.navbar-toggle > span.icon-bar {
+    background-color: #dedede
+}
+
+#navbar-collapse {
+    padding-top: 50px;
+    padding-right: 50px;
+}
+
+.main.logo.img {
+    width: 80px;
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.main.content-container {
+    background-image: url("../img/home-background.jpg");
+}
+
+.content-container {
+    width: 100%;
+    height: 300px;
+}
+
+
+/* Login Page */
 #login_form input[type="text"], #login_form input[type="password"] {
     color: black !important;
 }
 
+.login-box {
+    margin-top: 100px;
+}
+
+.login-box a:hover {
+    color: mintcream;
+}
+
+.forgot-passward-prompt {
+    color: white;
+}
+
+
+/* Appointment Page */
 #appointment_box select{
+    color: black;
+}
+
+#appointment_accordion {
+    margin-top: 80px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+}
+
+#appointment_accordion list {
     color: black;
 }
 
@@ -56,6 +143,7 @@ html, body {
     margin-right:auto;
 }
 
+/* Signup Page */
 #signup_form input[type="text"], #signup_form input[type="password"], #signup_form input[type="email"] {
     color: black !important;
 }
@@ -73,65 +161,8 @@ html, body {
     border-bottom-left-radius: 5px;
 }
 
-.my-navbar {
-    padding: 20px 0;
-    transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-}
-
 .prompt{
     color: white !important;
-}
-
-.my-navbar a {
-    background: transparent !important;
-    color: darkslategray !important
-}
-
-.my-navbar a:hover {
-    color: red !important;
-    background: transparent;
-    outline: 0
-}
-
-.my-navbar a {
-    transition: color 0.5s ease-in-out;
-}
-
-#appointment_accordion {
-    margin-top: 80px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    color: black;
-}
-
-#appointment_accordion list {
-    color: black;
-}
-
-/*-webkit-transition ;-moz-transition*/
-.top-nav {
-    padding: 0;
-    border-top: red 3px solid;
-    background: white;
-    height: 120px;
-}
-
-button.navbar-toggle {
-    background-color: #fbfbfb;
-}
-
-button.navbar-toggle > span.icon-bar {
-    background-color: #dedede
-}
-
-#navbar-collapse {
-    padding-top: 50px;
-    padding-right: 50px;
-}
-
-#myCarousel {
-    background: url("../img/Nathan-homepage.png")
 }
 
 .signup-prompt {
@@ -142,32 +173,11 @@ button.navbar-toggle > span.icon-bar {
     margin-top: 50px;
 }
 
-.login-box {
-    margin-top: 100px;
-}
 
-.login-box a:hover {
-    color: mintcream;
-}
-
-.forgot-passward-prompt {
-    color: white;
-}
-
-.layer {
-    background: #000;
-    opacity: 0.42;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-}
-
-* {
-    margin: 0;
-    padding: 0;
+/* Search input box for 'Find a Centre' and 'Blood Donor Database' */
+.search-input-container {
+    padding-top: 150px;
+    opacity: 1 !important;
 }
 
 .search-container {
@@ -180,15 +190,6 @@ button.navbar-toggle > span.icon-bar {
     background: rgba(256, 256, 256, 0.8) !important;
     background: white;
     filter: Alpha(opacity=80);
-}
-
-.red {
-    color: red;
-}
-
-.search-input-container {
-    padding-top: 150px;
-    opacity: 1 !important;
 }
 
 .search-result-list {
@@ -210,3 +211,22 @@ button.navbar-toggle > span.icon-bar {
 .hide {
     display: none;
 }
+
+
+/* Admin: All the Template Pages */
+#template-box td a{
+    color: white !important;
+}
+
+
+/* Admin: Create Page (bank, user and blood)*/
+#create-form table input{
+    color: black !important;
+    opacity: 0.8 !important;
+}
+
+#create-form select{
+    color: black;
+}
+
+
