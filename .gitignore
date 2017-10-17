@@ -2,3 +2,8 @@ db.sqlite3
 bloodline/__pycache__/user_views.cpython-36.pyc
 bloodline/__pycache__/user_views.cpython-36.pyc
 bloodline/__pycache__/user_views.cpython-36.pyc
+.idea/workspace.xml
+db.sqlite3
+bloodline/__pycache__/views.cpython-36.pyc
+bloodline/__pycache__/views.cpython-35.pyc
+*.pyc

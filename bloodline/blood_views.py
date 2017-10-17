@@ -1,11 +1,12 @@
-from django.contrib.admin.views.decorators import user_passes_test
+from django.urls import reverse_lazy
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from datetimewidget.widgets import DateTimeWidget
+from django.contrib.auth.decorators import login_required
 
-from .forms import BloodlineBloodForm
+from .forms import BloodlineBloodForm, BloodlineBloodFormPublic
 from .models import BloodlineBlood
+
 
 class BloodListView(generic.ListView):
     template_name = 'bloodline/blood_template/blood_list.html'
@@ -25,6 +26,21 @@ class CreateBlood(CreateView):
     model = BloodlineBlood
     form_class = BloodlineBloodForm
     template_name_suffix = '_create_form'
+
+@login_required
+class CreateBloodPublic(CreateView):
+    template_name = 'bloodline/appointment_request.html'
+    success_url = reverse_lazy('bloodline_app:home')
+    model = BloodlineBlood
+    form_class = BloodlineBloodFormPublic
+    template_name_suffix = '_create_form'
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.user = self.request.user
+        obj.blood_status = 0
+        obj.save()
+        return HttpResponseRedirect(reverse_lazy('bloodline_app:home'))
 
 class UpdateBlood(UpdateView):
     template_name = 'bloodline/blood_template/blood_update.html'

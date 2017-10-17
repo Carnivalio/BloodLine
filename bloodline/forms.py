@@ -27,12 +27,23 @@ class BloodlineBankForm(forms.ModelForm):
 class BloodlineBloodForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BloodlineBloodForm, self).__init__(*args, **kwargs)
-        for fieldname in ['user', 'bank', 'donor_date', 'blood_status']:
+        for fieldname in ['user', 'bank', 'donation_choices','donor_date', 'blood_status']:
             self.fields[fieldname].help_text = None
 
     class Meta:
         model = BloodlineBlood
-        fields = ['user', 'bank', 'donor_date', 'blood_status']
+        fields = ['user', 'bank', 'donation_choices', 'donor_date', 'blood_status']
+        widgets = {'donor_date': DateTimeWidget(attrs = {'id':'id_dateTimeField'}, bootstrap_version=3)}
+
+class BloodlineBloodFormPublic(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(BloodlineBloodFormPublic, self).__init__(*args, **kwargs)
+        for fieldname in ['bank', 'donation_choices','donor_date']:
+            self.fields[fieldname].help_text = None
+
+    class Meta:
+        model = BloodlineBlood
+        fields = ['bank', 'donation_choices', 'donor_date']
         widgets = {'donor_date': DateTimeWidget(attrs = {'id':'id_dateTimeField'}, bootstrap_version=3)}
 
 # class SignUpForm(UserCreationForm):

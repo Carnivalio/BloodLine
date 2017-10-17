@@ -50,6 +50,16 @@ html, body {
     margin-top: -150px;
 }
 
+#appointment_box select{
+    color: black;
+}
+
+#appointment_box{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right:auto;
+}
+
 #signup_form input[type="text"], #signup_form input[type="password"], #signup_form input[type="email"] {
     color: black !important;
 }
