@@ -60,21 +60,21 @@ class BloodlineUser(AbstractUser):
         return dict(BLOOD_CHOICES).get(self.blood_type)
 
 class BloodlineBank(models.Model):
-    name = models.CharField(max_length=80, null=False, blank=False, unique=True)
-    address = models.CharField(max_length=200, null=True, blank=True)
-    phone = models.CharField(max_length=15, validators=[phone_regex], blank=True)
+    name = models.CharField(max_length=80, null=False, blank=False, unique=True, help_text="Put the blood bank name here, maximum 80 characters.")
+    address = models.CharField(max_length=200, null=True, blank=True, help_text="Put your address here, maximum 200 characters.")
+    phone = models.CharField(max_length=15, validators=[phone_regex], blank=True, help_text="Mobile/Phone number must be entered in the format: '+999999999'. Minimum 9 digits & up to 15 digits allowed.")
     email = models.EmailField(max_length=70, blank=False)
-    postcode = models.CharField(max_length=4, blank=False)
+    postcode = models.CharField(max_length=4, blank=False, help_text="Postcode format: XXXX.")
     user = models.ManyToManyField(BloodlineUser, through='BloodlineBlood')
 
     def __str__(self):
         return self.name
 
 class BloodlineBlood(models.Model):
-    user = models.ForeignKey(BloodlineUser, on_delete=models.CASCADE)
-    bank = models.ForeignKey(BloodlineBank, on_delete=models.CASCADE)
-    donor_date = models.DateTimeField('donor date', null=False, blank=False)
-    blood_status = models.IntegerField(choices=STATUS_CHOICES, default=0, null=False, blank=False)
+    user = models.ForeignKey(BloodlineUser, on_delete=models.CASCADE, help_text="Choose which user donated their blood.")
+    bank = models.ForeignKey(BloodlineBank, on_delete=models.CASCADE, help_text="Choose which bank did the user donated their blood into.")
+    donor_date = models.DateTimeField('donor date', null=False, blank=False, help_text="Date & time format: DD/MM/YYYY HH:MM.")
+    blood_status = models.IntegerField(choices=STATUS_CHOICES, default=0, null=False, blank=False, help_text="Set the status of the donated blood.")
 
     @register.filter
     def get_blood_status(self):

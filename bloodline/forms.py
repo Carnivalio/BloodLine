@@ -5,10 +5,8 @@ from datetimewidget.widgets import DateTimeWidget
 from .models import BloodlineUser, BloodlineBank, BloodlineBlood
 
 class BloodlineUserForm(UserCreationForm):
-
     def __init__(self, *args, **kwargs):
         super(BloodlineUserForm, self).__init__(*args, **kwargs)
-
         for fieldname in ['username', 'password1', 'password2', 'mobile', 'address', 'blood_type']:
             self.fields[fieldname].help_text = None
 
@@ -17,11 +15,21 @@ class BloodlineUserForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2', 'gender', 'first_name', 'last_name', 'mobile', 'address', 'blood_type', 'public_profile']
 
 class BloodlineBankForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(BloodlineBankForm, self).__init__(*args, **kwargs)
+        for fieldname in ['name', 'address', 'postcode', 'phone', 'email']:
+            self.fields[fieldname].help_text = None
+
     class Meta:
         model = BloodlineBank
-        fields = ['name', 'address', 'phone', 'email', 'postcode']
+        fields = ['name', 'address', 'postcode', 'phone', 'email']
 
 class BloodlineBloodForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(BloodlineBloodForm, self).__init__(*args, **kwargs)
+        for fieldname in ['user', 'bank', 'donor_date', 'blood_status']:
+            self.fields[fieldname].help_text = None
+
     class Meta:
         model = BloodlineBlood
         fields = ['user', 'bank', 'donor_date', 'blood_status']
