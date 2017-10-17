@@ -1,0 +1,32 @@
+﻿<!-- <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+ -->
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'bloodline/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+<div id="header">
+    <div id="branding">
+    	<h1>Update User Page</h1>
+    </div>
+</div>
+
+<div id="content" class="flex">
+	<div id="content-main">
+{% block content %}
+    <h1>Update User</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td><input onclick="location.href='{% url 'bloodline_app:user_detail' pk=bloodlineuser.pk %}';" type="button" value="Back" /> <input type="submit" value="Update" /></td>
+        </tr>
+        </table>
+    </form>
+{% endblock %}
+	</div>
+</div>
