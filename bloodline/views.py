@@ -21,11 +21,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views import generic
 
 # from .forms import SignUpForm
-from .models import BloodlineUser, BloodlineBank, BloodlineBlood, BLOOD_CHOICES#, BloodlineAppointment
+from .models import BloodlineUser, BloodlineBank, BloodlineBlood, BLOOD_CHOICES  # , BloodlineAppointment
 from .tokens import account_activation_token
 # from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
 from .forms import BloodlineUserForm
-
 
 User = get_user_model()
 blood_type_dict = dict(BLOOD_CHOICES)
@@ -34,6 +33,7 @@ blood_type_dict = dict(BLOOD_CHOICES)
 @user_passes_test(lambda u: u.is_staff)
 def staff_main(request):
     return render(request, 'bloodline/staff_main.html')
+
 
 def signup(request):
     if request.method == 'POST':
@@ -70,18 +70,23 @@ class Home(generic.ListView):
     context_object_name = 'donor_list'
 
     def get_queryset(self):
-        return BloodlineBlood.objects.filter(user=self.request.user).order_by('-donor_date')[:10]
+        if self.request.user.is_authenticated():
+            return BloodlineBlood.objects.filter(user=self.request.user).order_by('-donor_date')[:10]
         # return BloodlineBlood.objects.filter(user=self.request.user)[:10]
+
 
 def header(request):
     return render(request, 'bloodline/header.html')
 
+
 def base_search(request):
     return render(request, 'bloodline/base_search.html')
+
 
 @login_required
 def appointment(request):
     return render(request, 'bloodline/appointment_request.html')
+
 
 def activate(request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
     try:
@@ -97,6 +102,7 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
     else:
         return HttpResponse('Activation link is invalid!')
 
+
 @csrf_exempt
 def list_centre(request):
     key_words = request.POST.get('key_words')
@@ -104,12 +110,19 @@ def list_centre(request):
     recontents_postcode = BloodlineBank.objects.filter(postcode__icontains=key_words)
     recontents_address = BloodlineBank.objects.filter(address__icontains=key_words)
     for recontent_postcode in recontents_postcode:
-        rejson.append("BLOOD BANK CENTER: " + str(recontent_postcode.name) + " | " + str(recontent_postcode.address) + ", " + str(recontent_postcode.postcode) + " | " + str(recontent_postcode.phone) + " | " + str(recontent_postcode.email))
+        rejson.append(
+            "BLOOD BANK CENTER: " + str(recontent_postcode.name) + " | " + str(recontent_postcode.address) + ", " + str(
+                recontent_postcode.postcode) + " | " + str(recontent_postcode.phone) + " | " + str(
+                recontent_postcode.email))
     for recontent_address in recontents_address:
-        rejson.append("BLOOD BANK CENTER: " + str(recontent_address.name) + " | " + str(recontent_address.address) + ", " + str(recontent_address.postcode) + " | " + str(recontent_address.phone) + " | " + str(recontent_address.email))
+        rejson.append(
+            "BLOOD BANK CENTER: " + str(recontent_address.name) + " | " + str(recontent_address.address) + ", " + str(
+                recontent_address.postcode) + " | " + str(recontent_address.phone) + " | " + str(
+                recontent_address.email))
     rejson.sort()
     rejson = list(set(rejson))
     return HttpResponse(json.dumps(rejson), content_type='application/json')
+
 
 @csrf_exempt
 def list_blood(request):
@@ -124,8 +137,8 @@ def list_blood(request):
         return HttpResponse(json.dumps([]), content_type='application/json')
     recontents = BloodlineUser.objects.filter(blood_type=current_type, public_profile=True)
     for recontent in recontents:
-        rejson.append("USER: " + str(recontent.username) + " | " + str(recontent.get_blood_type()) + " | " + str(recontent.address) + " | " + str(recontent.mobile) + " | " + str(recontent.email))
+        rejson.append("USER: " + str(recontent.username) + " | " + str(recontent.get_blood_type()) + " | " + str(
+            recontent.address) + " | " + str(recontent.mobile) + " | " + str(recontent.email))
     rejson.sort()
     rejson = list(set(rejson))
     return HttpResponse(json.dumps(rejson), content_type='application/json')
-
