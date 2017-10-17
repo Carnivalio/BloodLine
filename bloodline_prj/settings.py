@@ -85,7 +85,6 @@ TEMPLATES = [
     },
 ]
 
-
 # Authentication backends Setting
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
@@ -136,10 +135,20 @@ REST_FRAMEWORK = {
     ]
 }
 
+
+# Google OAuth keys and secret to establish connection from the bloodline app to google service
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "1041450590918-mq5kdrjhe98fpb5bv6f3i8do67r55pm1.apps.googleusercontent.com"
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "DgCWdnK2tyE9zUTUdNN4HBri"
 
+# Twitter secret and OAuth keys/secrets to provide connection with BloodLineDonate on twitter
+TWITTER_APP_KEY = 'P71z6oUt3Rf4viFJ0ICB9dncR'
+TWITTER_APP_SECRET = 'FT7tAPWwFYFHgGLClj0JrcWeGaLZJtTGPrcxMQF4z86VuHvgcs'
+TWITTER_OAUTH_TOKEN = '920042363891752960-POj9JCMGsreeGzbkEw46mSGbgOuzUKW'
+TWITTER_OAUTH_TOKEN_SECRET = 'yPZ4wc43KBcXdtz7liAT4ijzhbrWj294r2cmmTtYdQzE0'
+
+# Redirect here after login if there's no other query following the url
 LOGIN_REDIRECT_URL = '/bloodline'
+
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
@@ -156,21 +165,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+# The location of static files
 STATIC_URL = '/static/'
 
+# Default basic routing for bloodline application login, logout, and index/home
 LOGIN_URL = 'bloodline_app:login'
 LOGOUT_URL = 'bloodline_app:logout'
 LOGIN_REDIRECT_URL = 'bloodline_app:home'
 
+# Register custom database into default User database
 AUTH_USER_MODEL = 'bloodline.BloodlineUser'
 
-STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collectstatic')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
-
-TWITTER_APP_KEY = 'P71z6oUt3Rf4viFJ0ICB9dncR'
-TWITTER_APP_SECRET = 'FT7tAPWwFYFHgGLClj0JrcWeGaLZJtTGPrcxMQF4z86VuHvgcs'
-TWITTER_OAUTH_TOKEN = '920042363891752960-POj9JCMGsreeGzbkEw46mSGbgOuzUKW'
-TWITTER_OAUTH_TOKEN_SECRET = 'yPZ4wc43KBcXdtz7liAT4ijzhbrWj294r2cmmTtYdQzE0'
