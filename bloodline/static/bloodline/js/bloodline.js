@@ -27,7 +27,7 @@ $(document).ready(function () {
         $('.search-result-list').empty();
         $.ajax({
             type: "POST",
-            url: "../list_centre/",
+            url: "/bloodline/list_centre",
             data: {
                 'key_words': key_words
             },
@@ -41,6 +41,13 @@ $(document).ready(function () {
             }
         });
         return false;
+    });
+
+
+
+    $('.popup-close').keyup(function(){
+        $(".search-input").val('');
+        $(".search-result-list").children().remove();
     });
 
 
