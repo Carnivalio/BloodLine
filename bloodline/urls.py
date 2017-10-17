@@ -102,5 +102,5 @@ urlpatterns = [
     url(r'^base-search/', views.base_search),
 
     # url(r'^$', views.home, name='home'),
-    url(r'^$', views.Home.as_view(), name='home'),
+    url(r'^$', user_passes_test(lambda u: u.is_authenticated)(views.Home.as_view()), name='home'),
 ]

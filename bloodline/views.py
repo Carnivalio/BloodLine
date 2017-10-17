@@ -61,9 +61,9 @@ def signup(request):
     return render(request, 'bloodline/registration/signup.html', {'form': form})
 
 
-# @login_required
 # def home(request):
 #     return render(request, 'bloodline/home.html')
+# @login_required
 class Home(generic.ListView):
     template_name = 'bloodline/home.html'
     context_object_name = 'donor_list'
