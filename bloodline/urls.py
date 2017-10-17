@@ -84,7 +84,6 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'bloodline/registration/login.html'}, name='login'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', views.activate,
         name='activate'),
-    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^list_centre$', views.list_centre, name='list_centre'),
     url(r'^list_blood$', views.list_blood, name='list_blood'),

@@ -95,9 +95,9 @@ def list_centre(request):
     recontents_postcode = BloodlineBank.objects.filter(postcode__icontains=key_words)
     recontents_address = BloodlineBank.objects.filter(address__icontains=key_words)
     for recontent_postcode in recontents_postcode:
-        rejson.append(recontent_postcode.name)
+        rejson.append("BLOOD BANK CENTER: " + str(recontent_postcode.name) + " | " + str(recontent_postcode.address) + ", " + str(recontent_postcode.postcode) + " | " + str(recontent_postcode.phone) + " | " + str(recontent_postcode.email))
     for recontent_address in recontents_address:
-        rejson.append(recontent_address.name)
+        rejson.append("BLOOD BANK CENTER: " + str(recontent_address.name) + " | " + str(recontent_address.address) + ", " + str(recontent_address.postcode) + " | " + str(recontent_address.phone) + " | " + str(recontent_address.email))
     rejson.sort()
     rejson = list(set(rejson))
     return HttpResponse(json.dumps(rejson), content_type='application/json')
@@ -110,9 +110,12 @@ def list_blood(request):
     for each_type in blood_type_dict:
         if key_words.lower() in blood_type_dict[each_type].lower():
             current_type = each_type
-    recontents = BloodlineUser.objects.filter(blood_type=current_type)
+    print(blood_type_dict[current_type].lower())
+    if current_type == 0:
+        return HttpResponse(json.dumps([]), content_type='application/json')
+    recontents = BloodlineUser.objects.filter(blood_type=current_type, public_profile=True)
     for recontent in recontents:
-        rejson.append(recontent.username)
+        rejson.append("USER: " + str(recontent.username) + " | " + str(recontent.get_blood_type()) + " | " + str(recontent.address) + " | " + str(recontent.mobile) + " | " + str(recontent.email))
     rejson.sort()
     rejson = list(set(rejson))
     return HttpResponse(json.dumps(rejson), content_type='application/json')
