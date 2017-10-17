@@ -46,13 +46,6 @@ class BloodlineBloodFormPublic(forms.ModelForm):
         fields = ['bank', 'donation_choices', 'donor_date']
         widgets = {'donor_date': DateTimeWidget(attrs = {'id':'id_dateTimeField'}, bootstrap_version=3)}
 
-# class SignUpForm(UserCreationForm):
-#     email = forms.EmailField(max_length=200, help_text='Required')
-
-#     class Meta:
-#         model = BloodlineUser
-#         fields = ['email', 'username', 'password1', 'password2', 'gender', 'first_name', 'last_name', 'mobile', 'address', 'blood_type', 'verified', 'is_staff', 'is_active', 'is_superuser']
-
 class PasswordResetRequestForm(forms.Form):
     email_or_username = forms.CharField(label=("Email Or Username"), max_length=254)
 

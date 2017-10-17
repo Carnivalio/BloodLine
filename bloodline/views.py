@@ -3,37 +3,28 @@ import json
 from django.contrib.admin.views.decorators import user_passes_test
 from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
-# from django.shortcuts import redirect
 from django.shortcuts import render
-# from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils.encoding import force_text
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
-# from django.views import generic
 from django.views.decorators.csrf import csrf_exempt
-# from django.views.generic.edit import View
 from django.views import generic
 
-# from .forms import SignUpForm
 from .models import BloodlineUser, BloodlineBank, BloodlineBlood, BLOOD_CHOICES  # , BloodlineAppointment
 from .tokens import account_activation_token
-# from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
 from .forms import BloodlineUserForm
 
 User = get_user_model()
 blood_type_dict = dict(BLOOD_CHOICES)
 
-
 @user_passes_test(lambda u: u.is_staff)
 def staff_main(request):
     return render(request, 'bloodline/staff_main.html')
-
 
 def signup(request):
     if request.method == 'POST':
@@ -61,9 +52,6 @@ def signup(request):
     return render(request, 'bloodline/registration/signup.html', {'form': form})
 
 
-# @login_required
-# def home(request):
-#     return render(request, 'bloodline/home.html')
 class Home(generic.ListView):
     template_name = 'bloodline/home.html'
     context_object_name = 'donor_list'
@@ -71,21 +59,16 @@ class Home(generic.ListView):
     def get_queryset(self):
         if self.request.user.is_authenticated():
             return BloodlineBlood.objects.filter(user=self.request.user).order_by('-donor_date')[:10]
-        # return BloodlineBlood.objects.filter(user=self.request.user)[:10]
-
 
 def header(request):
     return render(request, 'bloodline/header.html')
 
-
 def base_search(request):
     return render(request, 'bloodline/base_search.html')
-
 
 @login_required
 def appointment(request):
     return render(request, 'bloodline/appointment_request.html')
-
 
 def activate(request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
     try:
@@ -100,7 +83,6 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
-
 
 @csrf_exempt
 def list_centre(request):

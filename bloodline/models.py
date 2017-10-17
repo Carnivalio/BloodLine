@@ -78,11 +78,6 @@ class BloodlineBank(models.Model):
     def __str__(self):
         return self.name
 
-# class BloodlineAppointment(models.Model):
-#     bank_id = models.ForeignKey(BloodlineBank)
-#     user = models.ManyToManyField(BloodlineUser)
-#     time = models.DateTimeField()
-
 class BloodlineBlood(models.Model):
     user = models.ForeignKey(BloodlineUser, on_delete=models.CASCADE, help_text="Choose which user donated their blood.")
     bank = models.ForeignKey(BloodlineBank, on_delete=models.CASCADE, help_text="Choose which bank did the user donated their blood into.")
