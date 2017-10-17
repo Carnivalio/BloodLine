@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import BloodlineBloodForm, BloodlineBloodFormPublic
 from .models import BloodlineBlood
+from django.contrib.admin.views.decorators import user_passes_test
 
 
 class BloodListView(generic.ListView):
