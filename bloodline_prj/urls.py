@@ -17,7 +17,12 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+	# basic routing to default django admin page from root project, e.g: localhost:8000/admin/
     url(r'^admin/', admin.site.urls),
+
+    # route to open bloodline app
     url(r'^bloodline/', include('bloodline.urls', namespace="bloodline_app")),
+
+    # route to trigger google OAuth social authentication
     url(r'^api/v1/', include('social_django.urls', namespace="social")),
 ]
