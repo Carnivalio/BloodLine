@@ -20,7 +20,7 @@ from django.views.decorators.csrf import csrf_exempt
 # from django.views.generic.edit import View
 
 # from .forms import SignUpForm
-from .models import BloodlineUser, BloodlineBank
+from .models import BloodlineUser, BloodlineBank, BloodlineAppointment
 from .tokens import account_activation_token
 # from .forms import SignUpForm, ForgetPwdForm, ModifyPwdForm
 from .forms import BloodlineUserForm
@@ -108,6 +108,15 @@ def list_centre(request):
     for recontent in recontents:
         rejson.append(recontent.name)
     return HttpResponse(json.dumps(rejson), content_type='application/json')
+
+def search_appointment_available(request):
+    bank_id = request.POST.get('bank_id')
+    from_date = request.POST.get('from_date')
+    to_date = request.POST.get('to_date')
+    appointments = BloodlineAppointment.objects.filter(bank_id = bank_id, date_range=(from_date, to_date))
+
+
+
 
 # TODO: this is social authentication sample page, merge with main login
 def social_auth(request):

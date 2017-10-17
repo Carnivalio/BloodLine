@@ -66,24 +66,13 @@
                     <li class="search-database-btn"><a href="#"><span class="glyphicon glyphicon-book"></span> Rare
                         Blood Donor Database</a></li>
                     {% if user.is_authenticated %}
-                        <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
                         <li class="logout-btn">
                             <a href={% url 'bloodline_app:logout' %}>
                                 <button type="button" class="btn btn-danger">Log Out</button>
                             </a>
                         </li>
-                    {% else %}
-                        <li class="login-btn">
-                            <a href={% url 'bloodline_app:login' %}>
-                                <button type="button" class="btn btn-danger">Log In</button>
-                            </a>
-                        </li>
+                        <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
                     {% endif %}
-                    <li class="signup-btn">
-                        <a href={% url 'bloodline_app:signup' %}>
-                            <button type="button" class="btn btn-info">Sign Up</button>
-                        </a>
-                    </li>
 
                 </ul>
             </div>
