@@ -45,9 +45,8 @@ BloodLine is a web-app that connects people who want to donate their blood, peop
 
 Bloodline can be regarded as a bridge among donor, people need blood and healthcare organizations. For the donors, they can request an appointment to donate their blood easily. For people need blood, especially people who have a rare kind of blood(e.g. O-Negative), they can connect with people having the same type of blood. For healthcare organizations, they have a large database to search the available blood donors and blood sources, which can save time at emergencies. 
 
-**TEMPORARY**
 ## Front-End Functionality
-
+For 
 ## Administrator
 
 - Able to add, edit, and delete User, Bank, and Blood Data
