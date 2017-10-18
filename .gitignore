@@ -2,3 +2,7 @@
 db.sqlite3
 *.pyc
 db.sqlite3
+*.pyc
+bloodline/__pycache__/forms.cpython-35.pyc
+bloodline/__pycache__/blood_views.cpython-35.pyc
+*.pyc
