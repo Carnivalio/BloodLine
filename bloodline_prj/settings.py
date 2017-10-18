@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'bootstrap3',
-    'captcha',
     'social_django',
     'bloodline',
     'datetimewidget',
