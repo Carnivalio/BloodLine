@@ -1,4 +1,5 @@
 ﻿# BloodLine
+Github Link: https://github.com/Carnivalio/BloodLine
 
 ## Code Style Rules
 
@@ -50,41 +51,50 @@ Bloodline can be regarded as a bridge among donor, people need blood and healthc
 ## Home
 
 - Functionality: On home page, users could learn more about blood donation
+- Link: http://54.206.126.58/bloodline/
 
 ## Donate
 
 - Functionality: Through donate function, users could request an appointment with the blood centres, the system will automatically record the information of the requesting donor by his login information
 - Usage: Choose the donation centre, donation type and appointment, then the system will record this request
+- Link: http://54.206.126.58/bloodline/login/?next=/bloodline/appointment/
 
 ## Find a Centre
 
 - Funtinality: Able to search a blood centre through postcode or name, this is an ajax function, which means the page does not need to be reload
 - Usage: Type in the postcode or name into the input space and the information of corresponding centres will be shown
+- Link: On any pages, click on the 'Find a Centre' button on the navigation bar
 
 ## Blood Donor Database
 
 - Functionality: Able to search donors through bloodtype, this is an ajax function, which means the page does not need to be reload
 - Usage: Type in the blood type into the input space and the users with that blood type will be shown
+- Link: On any pages, click on the 'Blood Donor Database' button on the navigation bar
 
 ## Log In
 
 - Functionality: Now we support two kinds of login, one is normal login, another one is login by Google
+- Link: http://54.206.126.58/bloodline/login/
 
 ## Sign Up
 
 - Functionality: Sign up a new user with his personal information and blood information. If the user tick "Public profile", then his information will be added to the donor database and could be searched later
+- Link: http://54.206.126.58/bloodline/signup/
 
 ## Web Service Functionality (Twitter Posts)
 
 - Functionality: We believe that Twitter has a large social influence. Thus, everytime a user donates the blood, the news about it will be posted on our public page on Twitter
+- Link: https://twitter.com/bloodlinedonate
 
 ## Administration Zone
 
 - Functionality: Control all the database (user, bank, and blood/donation)
+- Link: http://54.206.126.58/bloodline/staff/
 
 ## RESTFUL API
 
 - BloodLine also support RESTful API for easier data retrieval, this function supports all the data tables (users, blood bank, and the blood donation)
+- For list of functions, you can see it here: http://54.206.126.58/bloodline/api
 
 # Author
 
